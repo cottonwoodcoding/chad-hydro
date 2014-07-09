@@ -22,3 +22,14 @@
         %li.small-font Fri: 10:AM - 5:PM
         %li.small-font Sat: 10:AM - 5:PM
     #contact-form
+      %form{role: 'form'}
+        .form-group
+          %label{for: 'name'} Name
+          %input#name.form-control{name: 'name', type: 'text'}
+        .form-group
+          %label{for: 'email'} Email
+          %input#email.form-control{name: 'email', type: 'email'}
+        .form-group
+          %label{for: 'message'} Message
+          %textarea#message.form-control{name: 'messsage', rows: '3'}
+        %button#contact_request.btn.btn-primary.pull-right{type: 'submit'} Submit
