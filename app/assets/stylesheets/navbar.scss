@@ -1,6 +1,6 @@
 .navbar-organic {
   background-color: rgb(70, 173, 70);
-  max-width: 430px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
@@ -8,6 +8,7 @@
 
 .navbar-organic a {
   color: #F0F1CE !important;
+  border-radius:  30px;
 }
 
 .custom-nav li a:hover {
