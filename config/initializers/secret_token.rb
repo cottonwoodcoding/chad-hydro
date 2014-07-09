@@ -9,4 +9,8 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-ChadHydro::Application.config.secret_key_base = 'a3c274c137616d5e64782b3b4b86ab78f5690bb7a21e2e3b18710a16b4ba8a6aa834c38e711e25cb9a9051b5cd11b506422745e706471ec9c2221d22386c2101'
+ChadHydro::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
+  ('x' * 30)
+else
+  ENV['SERET_TOKEN']
+end
