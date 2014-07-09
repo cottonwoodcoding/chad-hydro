@@ -1,0 +1,19 @@
+.navbar-organic {
+  background-color: rgb(70, 173, 70);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.navbar-organic a {
+  color: #F0F1CE !important;
+}
+
+.navbar-organic li.active a {
+  background-color: #2A5C66 !important;
+}
+
+.custom-nav li a:hover {
+  color: black !important;
+}
