@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'shopify_api'
+gem "font-awesome-rails"
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'

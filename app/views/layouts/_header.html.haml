@@ -1,0 +1,32 @@
+%nav.navbar.navbar-default.navbar-organic{role: 'navigation'}
+  .container-fluid
+    .row
+      .navbar-header.col-md-8
+        %button.navbar-toggle{"data-target" => "#nav-items", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        #logo.pull-left
+          = image_tag('organic-logo.png', {width: '100px;', id: 'logo'})
+        #company-name.pull-left
+          .nav-header Moonlight Organics
+          #social-media-links.pull-right
+            = link_to 'http://www.facebook.com', {target: '_blank'} do
+              = fa_icon "facebook-square 2x"
+            = link_to 'http://www.instagram.com', {target: '_blank'} do
+              = fa_icon "instagram 2x"
+            = link_to 'http://www.twitter.com', {target: '_blank'} do
+              = fa_icon "twitter-square 2x"
+            = link_to 'http://www.youtube.com', {target: '_blank'} do
+              = fa_icon "youtube-square 2x"
+      .collapse.navbar-collapse#nav-items.custom-nav
+        %ul.nav.navbar-nav
+          %li
+            = link_to("About", '/about', {class: 'nav_item brown-background'})
+          %li
+            = link_to("Blog", '/blog', {class: 'nav_item'})
+          %li
+            = link_to("Shop", '/shop', {class: 'nav_item'})
+          %li
+            = link_to("Contact", '/contact', {class: 'nav_item'})
