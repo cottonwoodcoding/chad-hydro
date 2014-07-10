@@ -9,6 +9,6 @@ $ ->
         url: href
         success: (data) ->
           $('#content').html(data)
-          $("a[href='#{href}").addClass('brown-background')
+          $("a[href='#{href}']").addClass('brown-background')
         error: (data) ->
           alert(data)
