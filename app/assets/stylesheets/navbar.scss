@@ -1,3 +1,10 @@
+@mixin brown-background {
+  background: -webkit-linear-gradient(left top, #543D06, #A5863D); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #543D06, #A5863D); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #543D06, #A5863D); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #543D06, #A5863D); /* Standard syntax */
+}
+
 .navbar-nav {
   margin-top: 25px;
   font-size: 16px;
@@ -12,9 +19,10 @@
   border-radius:  30px;
 }
 
+.brown-background {
+  @include brown-background;
+}
+
 .custom-nav li a:hover {
-  background: -webkit-linear-gradient(left top, #543D06, #A5863D); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #543D06, #A5863D); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #543D06, #A5863D); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #543D06, #A5863D); /* Standard syntax */
+  @include brown-background;
 }
