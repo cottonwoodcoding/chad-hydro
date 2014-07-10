@@ -1,5 +1,3 @@
-#logo.text-center
-  = image_tag('organic-logo.png', {width: '250px', height: '250px'})
 %nav.navbar.navbar-default.navbar-organic{role: 'navigation'}
   .container-fluid
     .navbar-header
@@ -8,16 +6,14 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand.visible-xs{:href => "#"} Cottonwood Organics
+      = image_tag('organic-logo.png', {width: '100px;', id: 'logo'})
     .collapse.navbar-collapse#nav-items.custom-nav
-      %ul.nav.navbar-nav
+      %ul.nav.navbar-nav.pull-right
         %li
           = link_to("About", '/')
         %li
-          = link_to("Photos", '/')
-        %li
           = link_to("Blog", '/')
         %li
-          = link_to("Testimonial", '/')
+          = link_to("Shop", '/shop')
         %li
           = link_to("Contact", '/contact')

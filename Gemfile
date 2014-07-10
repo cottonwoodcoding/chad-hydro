@@ -11,6 +11,7 @@ gem 'sass-rails', '~> 4.0.2'
 gem 'haml-rails'
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
+gem 'shopify_api'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
