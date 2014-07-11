@@ -28,6 +28,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+ruby '2.0.0'
+
 group :production do
   gem 'pg'
   gem 'unicorn'
