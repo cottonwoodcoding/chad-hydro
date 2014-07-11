@@ -8,9 +8,9 @@ if Rails.env == 'development'
     raise 'Shopify config not found. Please copy config/shopify_config.yml.example and modify it'
   end
 else
-  api_key = ENV[:shopify_api_key]
-  password = ENV[:shopify_password]
-  shop_name = ENV[:shopify_shop_name]
+  api_key = ENV['shopify_api_key']
+  password = ENV['shopify_password']
+  shop_name = ENV['shopify_shop_name']
 end
 
 shop_url = "https://#{api_key}:#{password}@#{shop_name}.myshopify.com/admin"
