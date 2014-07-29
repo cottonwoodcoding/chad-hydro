@@ -1,19 +1,19 @@
-.well.well-sm
-  %strong Shop
+%h2.text-center
+  Shop
+#accordion.panel-group.text-center
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+          Categories
+    #collapseOne.panel-collapse.collapse.out
+      .panel-body
+        .category
+          %a{href: '#' } All
+        - @categories.each do |key, value|
+          .category
+            %a{href: '#' }
+              = key
 #products.row.list-group
-  - @products.each do |product|
-    .item.col-md-3
-      .thumbnail
-        %img.group.list-group-image{:alt => "", :src => product.images.first.src}
-        .caption
-          %h4.group.inner.list-group-item-heading
-            = product.title
-          %p.group.inner.list-group-item-text
-            = strip_tags product.body_html
-          .row
-            .col-xs-12.col-md-6
-              %p.lead
-                = product.variants.first.price
-            .col-xs-12.col-md-6
-              %a.btn.btn-success{:href => "#"} Add to cart
+  = render(partial: 'product_slide', locals: {products: @products})
 
