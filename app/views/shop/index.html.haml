@@ -1,5 +1,5 @@
-%h2.text-center
-  Shop
+%h2#shop_header.text-center
+  Shop - All
 #accordion.panel-group.text-center
   .panel.panel-default
     .panel-heading
@@ -9,11 +9,11 @@
     #collapseOne.panel-collapse.collapse.out
       .panel-body
         .category
-          %a{href: '#' } All
+          %a{href: '#', value: 'All'} All
         - @categories.each do |key, value|
           .category
-            %a{href: '#' }
-              = key
+            %a{href: '#', value: key}
+              = key.pluralize
 #products.row.list-group
   = render(partial: 'products', locals: {products: @products})
 
