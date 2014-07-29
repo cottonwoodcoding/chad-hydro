@@ -12,7 +12,7 @@ class ShopController < ApplicationController
     category = params[:category]
     products = @products
     products = @products.map{ |product| product if product.product_type == params[:category] }.compact unless category == 'All'
-    render(partial: 'product_slide', locals: { products: products}) and return
+    render(partial: 'products', locals: { products: products}) and return
   end
 
   private
