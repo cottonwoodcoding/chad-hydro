@@ -15,12 +15,14 @@
           - @featured_products.each_with_index do |product, index|
             - if index == 0
               .item.active
-                %img{alt: "...", src: product.images.first.src}
+                %a{:href => "/shop/product/#{product.id}"}
+                  %img#ctl00_XXX{:src => image_path("#{product.id}-thumb.jpg") }
                 .carousel-caption
                   = product.title
             - else
               .item
-                %img{alt: "...", src: product.images.first.src}
+                %a{:href => "/shop/product/#{product.id}"}
+                  %img#ctl00_XXX{:src => image_path("#{product.id}-thumb.jpg") }
                 .carousel-caption
                   = product.title
         %a.left.carousel-control{"data-slide" => "prev", href: "#carousel-example-generic", role: "button"}

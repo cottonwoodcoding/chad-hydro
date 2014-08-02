@@ -7,6 +7,10 @@ class ShopController < ApplicationController
     @category = 'All'
   end
 
+  def product
+    @product = ShopifyAPI::Product.find(params[:product_id])
+  end
+
   def sort_by_category
     @category = params[:category_type]
     @products = @category ==  'all' ?  @products : ShopifyAPI::Product.where(product_type: @category)
