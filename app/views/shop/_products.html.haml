@@ -5,11 +5,12 @@
       .caption
         %h4.group.inner.list-group-item-heading
           = product.title
-        %p.group.inner.list-group-item-text
-          = strip_tags product.body_html
+        .body-container
+          %p.group.inner.list-group-item-text
+            = strip_tags product.body_html
         .row
           .col-xs-12.col-md-6
             %p.lead
               = product.variants.first.price
           .col-xs-12.col-md-6
-            %a.btn.btn-success{:href => "#"} Add to cart
+            %a.btn.btn-success.btn-sm.pull-right{:href => "#"} Add to cart

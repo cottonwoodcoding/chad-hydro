@@ -12,7 +12,7 @@
           %a{href: '/shop/category/all'} All
         - @categories.each do |key, value|
           .category
-            %a{href: "/shop/category/#{key}"}
+            %a{href: "/shop/category/#{key}", 'data-no-turbolink' => 'true'}
               = key.pluralize
 .container
   .well.well-sm
