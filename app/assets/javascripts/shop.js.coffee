@@ -9,4 +9,13 @@ $ ->
     $("#products .item").removeClass "list-group-item"
     $("#products .item").addClass "grid-group-item"
 
-  $('.list-group-item-text').ellipsis({ row: 5 })
+  $('.body-container').dotdotdot({
+      ellipsis: '...',
+      wrap: 'word',
+      row: 5,
+      after: 'a.readmore'
+    })
+
+  $('.body-container').each () ->
+    truncated = $(@).triggerHandler('isTruncated')
+    $(@).children().children('.readmore').removeClass('hidden') if truncated
