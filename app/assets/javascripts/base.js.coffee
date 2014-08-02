@@ -9,4 +9,3 @@ $ ->
     else
       $navItems.each ->
         $(@).addClass(boldClass) if $(@).attr('href') == path
-
