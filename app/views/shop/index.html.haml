@@ -9,7 +9,7 @@
     #collapseOne.panel-collapse.collapse.in
       .panel-body
         .category
-          %a{href: '/shop/category/all'} All
+          %a{href: '/shop/category/all', 'data-no-turbolink' => 'true'} All
         - @categories.each do |key, value|
           .category
             %a{href: "/shop/category/#{key}", 'data-no-turbolink' => 'true'}
