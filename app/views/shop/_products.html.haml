@@ -1,17 +1,20 @@
 - products.each do |product|
   .item.col-xs-4.col-lg-4
     .thumbnail
-      %img.group.list-group-image{:alt => "", :src => image_path("#{product.id}-thumb.jpg")}/
+      %img.group.list-group-image{:alt => "", :src => image_thumb(product.id)}
       .caption
-        %h4.group.inner.list-group-item-heading
-          = product.title
+        .product-title
+          %a.group.inner.list-group-item-heading{href: product_url(product.id)}
+            = product.title
         .body-container
           %p.group.inner.list-group-item-text
             = strip_tags product.body_html
-            %a.readmore.hidden{:href => "/shop/product/#{product.id}"} read more
+            %a.readmore.hidden{:href => product_url(product.id)} read more
+      .footer
         .row
           .col-xs-12.col-md-6
             %p.lead
               = product.variants.first.price
           .col-xs-12.col-md-6
-            %a.btn.btn-success.btn-sm.pull-right{:href => "#"} Add to cart
+            %a.add_to_cart.btn.btn-primary.btn-xs.pull-right{:href => "#"} Add To Cart
+            %a.btn.btn-success.btn-xs.pull-right.more-details{:href => product_url(product.id)} More Details

@@ -1,13 +1,11 @@
 .glyphicon { margin-right:5px; }
 .thumbnail
 {
-    margin-bottom: 20px;
-    padding: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
-    height: 350px;
-    min-height: 350px;
+    height: 420px;
+    min-height: 420px;
 }
 
 .item.list-group-item
@@ -62,4 +60,16 @@
   height: 70px;
   min-height: 70px;
   margin-bottom: 10px;
+}
+
+.more-details {
+  margin-right: 5px;
+}
+
+.product-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: underline;
+  height: 30px;
+  min-height: 30px;
 }
