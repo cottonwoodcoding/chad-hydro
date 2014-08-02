@@ -8,3 +8,5 @@ $ ->
     event.preventDefault()
     $("#products .item").removeClass "list-group-item"
     $("#products .item").addClass "grid-group-item"
+
+  $('.list-group-item-text').ellipsis({ row: 5 })
