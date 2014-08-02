@@ -6,3 +6,31 @@
 .small-font {
   font-size: 10px;
 }
+
+.nav-header {
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+  width: auto;
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.carousel-caption {
+  position: relative !important;
+  right: 0 !important;
+  left: 0 !important;
+  color: black !important;
+  padding-top: 30px !important;
+}
+
+.header-bold-text {
+  font-weight: bold;
+  font-size: 20px;
+}

@@ -1,1 +1,31 @@
-= render(partial: 'shared/about')
+.container-fluid
+  .row
+    %h2.text-center About Us
+    .clearfix
+    %hr
+    .well
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec velit volutpat, semper libero id, bibendum mauris. In eget mi ultrices, blandit sapien at, tristique arcu. Vivamus eget magna non augue sagittis pharetra facilisis ac nunc. Vestibulum augue lorem, lacinia at auctor sed, elementum ac risus. Etiam vulputate tortor vel lorem mattis, ac suscipit urna rutrum. Nam non dolor varius, venenatis felis ac, ornare nulla. Phasellus fringilla vel diam a varius. Integer sapien elit, sodales sed rhoncus vel, tristique id dolor. Aenean magna orci, sodales sed lectus sed, fringilla luctus nisi. Proin ut metus ac risus suscipit semper nec id mauris. Mauris lorem massa, adipiscing in bibendum ac, vulputate ut tortor. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi eu arcu et augue volutpat sagittis. Praesent ut orci non urna facilisis consequat.
+    %hr
+    .clearfix
+  .row
+    .c-wrapper
+      %h2.text-center Featured Products
+      #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+        .carousel-inner
+          - @featured_products.each_with_index do |product, index|
+            - if index == 0
+              .item.active
+                %a{:href => "/shop/product/#{product.id}"}
+                  %img{:src => image_path("#{product.id}-thumb.jpg") }
+                .carousel-caption
+                  = product.title
+            - else
+              .item
+                %a{:href => "/shop/product/#{product.id}"}
+                  %img{:src => image_path("#{product.id}-thumb.jpg") }
+                .carousel-caption
+                  = product.title
+        %a.left.carousel-control{"data-slide" => "prev", href: "#carousel-example-generic", role: "button"}
+          %span.glyphicon.glyphicon-chevron-left
+        %a.right.carousel-control{"data-slide" => "next", href: "#carousel-example-generic", role: "button"}
+          %span.glyphicon.glyphicon-chevron-right

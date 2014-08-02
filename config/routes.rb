@@ -1,5 +1,5 @@
 ChadHydro::Application.routes.draw do
-  root 'home#index'
+  root 'about#index'
 
   get '/about', to: 'about#index'
   get '/blog', to: 'blog#index'
