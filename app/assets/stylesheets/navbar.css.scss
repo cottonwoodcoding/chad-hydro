@@ -27,3 +27,16 @@
 .custom-nav li a:hover {
   @include brown-background;
 }
+
+.dropdown-menu {
+  background-color: rgb(70, 173, 70);
+}
+
+.dropdown-menu a:hover {
+  @include brown-background;
+}
+
+.settings{
+  background-color: #46ad46 !important;
+}
+
