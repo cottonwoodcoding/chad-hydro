@@ -1,26 +1,33 @@
 class ShopController < ApplicationController
   respond_to :html
-  before_action :products_and_categories
+  before_filter :all_products_and_categories
+  before_filter :create_thumbnails, only: [:index]
 
   def index
-    respond_with @products do |format|
-        format.html { render :layout => false }
-      end
+    @category = 'All'
   end
 
   def sort_by_category
-    category = params[:category]
-    products = @products
-    products = @products.map{ |product| product if product.product_type == params[:category] }.compact unless category == 'All'
-    render(partial: 'products', locals: { products: products}) and return
+    @category = params[:category_type]
+    @products = @category ==  'all' ?  @products : ShopifyAPI::Product.where(product_type: @category)
+    render('index')
   end
 
   private
 
-  def products_and_categories
-    @categories = Hash.new{|hash, key| hash[key] = Array.new}
+  def all_products_and_categories
     @products = ShopifyAPI::Product.all
-    @products.map{|product| @categories[product.product_type] << product}
+    @categories = Hash.new{|hash, key| hash[key] = Array.new}
+    @products.map{ |product| @categories[product.product_type] << product }
+  end
+
+  def create_thumbnails
+    @products.each do |product|
+      path = "#{Rails.root}/app/assets/images/#{product.id}-thumb.jpg"
+      next if File.exists?(path)
+      image = Magick::Image.read(product.images.first.src)
+      image.first.thumbnail(400, 250).write(path)
+    end
   end
 
 end
