@@ -16,6 +16,6 @@ $ ->
       after: 'a.readmore'
     })
 
-  $('.body-container').each () ->
+  $('.body-container').each ->
     truncated = $(@).triggerHandler('isTruncated')
     $(@).children().children('.readmore').removeClass('hidden') if truncated
