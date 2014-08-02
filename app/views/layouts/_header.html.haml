@@ -29,3 +29,11 @@
           = link_to("Shop", '/shop', {class: 'nav_item'})
         %li
           = link_to("Contact", '/contact', {class: 'nav_item'})
+        %li.dropdown
+          %a.settings.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
+            %b.fa.fa-gears
+          %ul.dropdown-menu
+            %li
+              %a{href: '#'} Subscribe
+            %li
+              %a{href: '#'} Sign in
