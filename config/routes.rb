@@ -5,7 +5,7 @@ ChadHydro::Application.routes.draw do
   get '/blog', to: 'blog#index'
   get '/contact', to: 'contacts#index'
   get '/shop', to: 'shop#index'
-  get '/sort_by_category', to: 'shop#sort_by_category'
+  get '/shop/category/:category_type', to: 'shop#sort_by_category'
 
   post '/submit_request', to: 'contacts#submit_request'
 end

@@ -1,7 +1,7 @@
 - products.each do |product|
-  .item.col-md-3
+  .item.col-xs-4.col-lg-4
     .thumbnail
-      %img.group.list-group-image{:alt => "", :src => product.images.first.src}
+      %img.group.list-group-image{:alt => "", :src => image_path("#{product.id}-thumb.jpg")}/
       .caption
         %h4.group.inner.list-group-item-heading
           = product.title

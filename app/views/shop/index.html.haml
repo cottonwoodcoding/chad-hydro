@@ -1,19 +1,29 @@
 %h2#shop_header.text-center
-  Shop - All
+  = "Shop - #{@category.titleize}"
 #accordion.panel-group.text-center
   .panel.panel-default
     .panel-heading
       %h4.panel-title
         %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
           Categories
-    #collapseOne.panel-collapse.collapse.out
+    #collapseOne.panel-collapse.collapse.in
       .panel-body
         .category
-          %a{href: '#', value: 'All'} All
+          %a{href: '/shop/category/all'} All
         - @categories.each do |key, value|
           .category
-            %a{href: '#', value: key}
+            %a{href: "/shop/category/#{key}"}
               = key.pluralize
-#products.row.list-group
-  = render(partial: 'products', locals: {products: @products})
+.container
+  .well.well-sm
+    %strong Category Title
+    .btn-group
+      %a#list.btn.btn-default.btn-sm{:href => "#"}
+        %span.glyphicon.glyphicon-th-list>
+        List
+      %a#grid.btn.btn-default.btn-sm{:href => "#"}
+        %span.glyphicon.glyphicon-th>
+        Grid
+  #products.row.list-group
+    = render(partial: 'products', locals: {products: @products})
 
