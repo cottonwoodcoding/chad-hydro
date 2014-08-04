@@ -1,0 +1,13 @@
+#carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+  .carousel-inner
+    - images.each_with_index do |image, index|
+      - if index == 0
+        .item.active
+          %img{:src => image.src }
+      - else
+        .item
+          %img{:src => image.src }
+  %a.left.carousel-control{"data-slide" => "prev", href: "#carousel-example-generic", role: "button"}
+    %span.glyphicon.glyphicon-chevron-left
+  %a.right.carousel-control{"data-slide" => "next", href: "#carousel-example-generic", role: "button"}
+    %span.glyphicon.glyphicon-chevron-right

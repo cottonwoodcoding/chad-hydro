@@ -1,0 +1,11 @@
+%ul.nav.nav-tabs{:role => "tablist"}
+  - if position == 1
+    %li.active
+      %a{:href => product_url(@product.id)} Product
+    %li
+      %a{:href => "#{product_url(@product.id)}/reviews"} Product Reviews
+  - else
+    %li
+      %a{:href => product_url(@product.id)} Product
+    %li.active
+      %a{:href => "#{product_url(@product.id)}/reviews"} Product Reviews

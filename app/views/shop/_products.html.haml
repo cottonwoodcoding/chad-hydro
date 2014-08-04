@@ -13,8 +13,9 @@
       .footer
         .row
           .col-xs-12.col-md-6
-            %p.lead
+            %p.lead.text-success
+              $
               = product.variants.first.price
           .col-xs-12.col-md-6
-            %a.add_to_cart.btn.btn-primary.btn-xs.pull-right{:href => "#"} Add To Cart
-            %a.btn.btn-success.btn-xs.pull-right.more-details{:href => product_url(product.id)} More Details
+            %a.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "#"} Add To Cart
+            %a.btn.btn-success.btn-sm.pull-right.button-margin{:href => product_url(product.id)} More Details

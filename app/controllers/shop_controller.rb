@@ -11,6 +11,11 @@ class ShopController < ApplicationController
     @product = ShopifyAPI::Product.find(params[:product_id])
   end
 
+  def product_reviews
+    @product = ShopifyAPI::Product.find(params[:product_id])
+    #TODO: figure out how to get reviews maybe roll our own?
+  end
+
   def sort_by_category
     @category = params[:category_type]
     @products = @category ==  'all' ?  @products : ShopifyAPI::Product.where(product_type: @category)

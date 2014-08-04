@@ -27,3 +27,4 @@ $ ->
   $('.add_to_cart').click (e) ->
     e.preventDefault()
     console.log 'added to cart'
+
