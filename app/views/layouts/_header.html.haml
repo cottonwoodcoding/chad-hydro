@@ -36,4 +36,7 @@
             %li
               %a{href: '#'} Subscribe
             %li
-              %a{href: '#'} Sign in
+              - if user_signed_in?
+                = link_to 'Logout', destroy_user_session_path, :method => :delete, :calss => 'delete'
+              - else
+                = link_to 'Sign In', new_user_session_path, :method => :get
