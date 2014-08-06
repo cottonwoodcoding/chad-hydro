@@ -11,12 +11,9 @@ gem 'shopify_api'
 gem "font-awesome-rails"
 gem 'rmagick'
 gem 'devise'
-<<<<<<< HEAD
 gem 'underscore-rails'
 gem 'gmaps4rails'
-=======
 gem 'tinymce-rails'
->>>>>>> intitial blog work
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

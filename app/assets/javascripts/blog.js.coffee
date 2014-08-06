@@ -1,4 +1,9 @@
 $ ->
+  underline = ->
+    $('.post-title').removeClass('underline')
+    $('.post-title').each ->
+      $(@).addClass('underline') if $(@).attr('data-id') == $('.article-title').attr('data-id')
+
   $('.post').dotdotdot
     ellipsis: '...',
     wrap: 'letter',
@@ -13,3 +18,8 @@ $ ->
     $('.article-title').text(post.data('title'))
     $('.article-body').html(post.data('body'))
     $('.article-author').text("#{post.data('author')} - #{post.data('date')}")
+    $('.article-title').attr('data-id', post.data('article_id'))
+    underline()
+
+  window.onload = ->
+    underline()

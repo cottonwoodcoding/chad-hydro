@@ -21,8 +21,8 @@
                 %li
                   .post
                     - date = a['created_at'].to_datetime.strftime("%D")
-                    .data{'data-title' => a['title'], 'data-author' => a['author'], 'data-body' => a['body_html'], 'data-date' => date}
-                    %a.post-title{href: "#"}
+                    .data{'data-article_id' => a['id'], 'data-title' => a['title'], 'data-author' => a['author'], 'data-body' => a['body_html'], 'data-date' => date}
+                    %a.post-title{href: "#", 'data-id' => a['id']}
                       = a['title']
               - first = false
 
