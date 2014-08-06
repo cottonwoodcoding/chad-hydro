@@ -1,4 +1,4 @@
-%nav.navbar.navbar-default.navbar-organic{role: 'navigation'}
+.navbar.navbar-default.navbar-organic{role: 'navigation'}
   .container-fluid
     .navbar-header
       %button.navbar-toggle{"data-target" => "#nav-items", "data-toggle" => "collapse", :type => "button"}
@@ -29,6 +29,11 @@
           = link_to("Shop", '/shop', {class: 'nav_item'})
         %li
           = link_to("Contact", '/contact', {class: 'nav_item'})
+        %li
+          %a{:href => ""}
+            = fa_icon "shopping-cart"
+            0
+
         %li.dropdown
           %a.settings.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
             %b.fa.fa-gears
