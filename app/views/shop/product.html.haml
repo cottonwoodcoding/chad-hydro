@@ -16,8 +16,8 @@
       .row
         .col-xs-12.col-md-6
           %p.lead.text-success
-            $
-            = @product.variants.first.price
+            Price:
+            = number_to_currency(@product.variants.first.price)
         .col-xs-12.col-md-6
-          %a.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "#"} Add To Cart
-          = button_to("Back To Shop", '/shop', {method: 'get', class: 'button-margin btn pull-right btn-sm'})
+          %a.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{@product.id}/1"} Add To Cart
+          = button_to("Back", :back, {method: 'get', class: 'button-margin btn pull-right btn-sm'})

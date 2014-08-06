@@ -26,5 +26,11 @@ $ ->
 
   $('.add_to_cart').click (e) ->
     e.preventDefault()
-    console.log 'added to cart'
+    $.ajax
+      type: 'POST'
+      url: $(@).attr('href')
+      success: (data) ->
+        window.location.reload()
+      error: (data) ->
+         window.location.reload()
 

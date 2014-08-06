@@ -30,10 +30,9 @@
         %li
           = link_to("Contact", '/contact', {class: 'nav_item'})
         %li
-          %a{:href => ""}
+          %a{:href => "/cart"}
             = fa_icon "shopping-cart"
-            0
-
+            = shopping_cart_count
         %li.dropdown
           %a.settings.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
             %b.fa.fa-gears

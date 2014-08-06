@@ -1,0 +1,4 @@
+%h3.text-center
+  = "Shopping Cart - Total: #{number_to_currency(@total)}"
+%hr
+= render(partial: 'shop/products', locals: {products: @products, cart: true})
