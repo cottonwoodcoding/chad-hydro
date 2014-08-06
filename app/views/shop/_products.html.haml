@@ -17,5 +17,6 @@
               Price:
               = number_to_currency(product.variants.first.price)
           .col-xs-12.col-md-12
-            %a.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{product.id}/1"} Add To Cart
+            - unless defined?(cart)
+              %a.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{product.id}/1"} Add To Cart
             %a.btn.btn-success.btn-sm.pull-right.button-margin{:href => product_url(product.id)} More Details

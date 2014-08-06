@@ -1,4 +1,8 @@
-%h3.text-center
-  = "Shopping Cart - Total: #{number_to_currency(@total)}"
+#cart-header.text-center
+  %h3
+    Shopping Cart - Total:
+    %span.text-success
+      = number_to_currency(@total)
+  %a{href: "http://heritage-organics.myshopify.com/cart/#{perma_link_append}", role: 'button', class: 'btn btn-primary', target: '_blank'} Checkout
 %hr
 = render(partial: 'shop/products', locals: {products: @products, cart: true})
