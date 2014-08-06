@@ -11,6 +11,8 @@ gem 'shopify_api'
 gem "font-awesome-rails"
 gem 'rmagick'
 gem 'devise'
+gem 'underscore-rails'
+gem 'gmaps4rails'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

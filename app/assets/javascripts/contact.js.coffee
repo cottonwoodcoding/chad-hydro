@@ -1,4 +1,16 @@
 $ ->
+   handler = Gmaps.build("Google")
+   handler.buildMap
+     internal:
+       id: "map"
+   , ->
+     marker = handler.addMarker({
+       lat: 40.727942
+       lng: -111.895180
+     })
+     handler.map.centerOn(marker)
+     return
+
   $('#contact_request').bind 'click', (e) ->
     e.preventDefault()
     $errors = 0

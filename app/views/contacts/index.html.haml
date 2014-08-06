@@ -1,34 +1,79 @@
-%section
-  #contact-details.vertical-line
-    %ul.list-unstyled
-      %li
-        %h4 Phone:
-      %li (555) 555-5555
-      %li
-        %h4 Email:
-      %li me@example.com
-      %li
-        %h4 Address:
-      %li 123 E 456 S
-      %li SLC, UT 84101
-      %li
-        %h4
-          Hours:
-      %li Mon: 10:AM - 5:PM
-      %li Tue: 10:AM - 5:PM
-      %li Wed: 10:AM - 5:PM
-      %li Thu: 10:AM - 5:PM
-      %li Fri: 10:AM - 5:PM
-      %li Sat: 10:AM - 5:PM
-  #contact-form
-    %form{role: 'form'}
-      .form-group
-        %label{for: 'name'} Name
-        %input#name.form-control{name: 'name', type: 'text'}
-      .form-group
-        %label{for: 'email'} Email
-        %input#email.form-control{name: 'email', type: 'email'}
-      .form-group
-        %label{for: 'message'} Message
-        %textarea#message.form-control{name: 'messsage', rows: '3'}
-      %button#contact_request.btn.btn-primary.pull-right{type: 'submit'} Submit
+.container
+  .row
+    .col-sm-12.col-lg-12
+      .panel
+        .panel-heading
+          %h3
+            %i.icon-map-marker.main-color
+            Location
+        .panel-body
+          #map{:style => "width: 100%; height: 200px;"}
+  %hr
+    .row
+      .col-sm-4.col-lg-4
+        .panel
+          .panel-heading
+            %h3
+              %i.icon-pushpin.main-color
+              Our Location
+          .panel-body
+            %address
+              %strong Moonlight Garden Supply
+              %br
+                150 W. Commonwealth Avenue
+                %br
+                  Salt Lake City, UT 84115
+                  %br
+                    %i.icon-phone-sign
+                    (801) 793-9587
+        .panel
+          .panel-heading
+            %h3
+              %i.icon-time.main-color
+              Business Hours
+          .panel-body
+            %table.table.table-hover
+              %thead
+                %tr
+                  %th Day
+                  %th Time
+              %tbody
+                %tr.success
+                  %td Monday
+                  %td 8:00 to 6:00
+                %tr.success
+                  %td Tuesday
+                  %td 8:00 to 6:00
+                %tr.success
+                  %td Wednesday
+                  %td 8:00 to 6:00
+                %tr.success
+                  %td Thursday
+                  %td 8:00 to 6:00
+                %tr.success
+                  %td Friday
+                  %td 8:00 to 6:00
+                %tr.success
+                  %td Saturday
+                  %td 9:00 to 9:00
+                %tr.danger
+                  %td Sunday
+                  %td Closed
+      .col-12.col-lg-8
+        .panel
+          .panel-heading
+            %h3
+              %i.icon-envelope.main-color
+              Feel free to contact us
+          .panel-body
+            %form#feedbackForm{:role => "form"}
+              .form-group
+                %input#name.form-control{:name => "name", :placeholder => "Name", :type => "text"}
+                  %span.help-block{:style => "display: none;"} Please enter your name.
+              .form-group
+                %input#email.form-control{:name => "email", :placeholder => "Email Address", :type => "email"}
+                  %span.help-block{:style => "display: none;"} Please enter a valid e-mail address.
+              .form-group
+                %textarea#message.form-control{:cols => "100", :name => "message", :placeholder => "Message", :rows => "10"}
+                %span.help-block{:style => "display: none;"} Please enter a message.
+              %button#feedbackSubmit.btn.btn-primary.btn-lg{:style => "display: block; margin-top: 10px;", :type => "submit"} Send Feedback

@@ -5,6 +5,8 @@
     %title Moonlight Garden Supply
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
+    %script{:src => "//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry", :type => "text/javascript"}
+    %script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", :type => "text/javascript"}
     = csrf_meta_tags
   %body
     %header
