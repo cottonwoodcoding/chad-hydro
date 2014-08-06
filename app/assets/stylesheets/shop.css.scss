@@ -4,6 +4,7 @@
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
+    overflow: hidden;
 }
 
 .item.list-group-item
@@ -66,4 +67,5 @@
   text-decoration: underline;
   height: 30px;
   min-height: 30px;
+  width: 295px;
 }
