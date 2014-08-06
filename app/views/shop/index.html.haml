@@ -15,15 +15,6 @@
             %a{href: "/shop/category/#{key}"}
               = key.pluralize
 .container-fluid
-  .well.well-sm
-    %strong Category Title
-    .btn-group
-      %a#list.btn.btn-default.btn-sm{:href => "#"}
-        %span.glyphicon.glyphicon-th-list>
-        List
-      %a#grid.btn.btn-default.btn-sm{:href => "#"}
-        %span.glyphicon.glyphicon-th>
-        Grid
   #products.row.list-group
     = render(partial: 'products', locals: {products: @products})
 
