@@ -1,1 +1,33 @@
-blog
+- if user_signed_in?
+  = link_to "New Post", blog_new_path
+%h4 Articles
+.main-container
+  .article-container.pull-left
+    - first = true
+    - @articles.sort_by{|k, v| k.to_datetime}.reverse!.each do |date, post|
+      - id = date.gsub(" ", "_")
+      - open = first ? 'in' : ''
+      - caret = first ? 'fa-caret-down' : 'fa-caret-right'
+      .panel-group{id: "accordion_#{id}"}
+        .panel.panel-default
+          %h4.panel-title
+            %a{'data-toggle' => 'collapse', 'data-parent' => "accordion_#{id}", href: "#collapse#{id}"}
+              = date
+            %i.caret-toggle.fa{class: caret}
+        .panel-collapse.collapse{id: "collapse#{id}", class: open}
+          .panel-body
+            %ul
+              - post.each do |a|
+                %li
+                  .post
+                    - date = a['created_at'].to_datetime.strftime("%D")
+                    .data{'data-title' => a['title'], 'data-author' => a['author'], 'data-body' => a['body_html'], 'data-date' => date}
+                    %a.post-title{href: "#"}
+                      = a['title']
+              - first = false
+
+  - if @articles.any?
+    - article = @articles.values.first.first
+  .main-article
+    = render '/layouts/post', :article => article
+

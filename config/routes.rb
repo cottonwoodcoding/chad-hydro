@@ -10,6 +10,8 @@ ChadHydro::Application.routes.draw do
   get '/shop/product/:product_id', to: 'shop#product'
   get '/shop/product/:product_id/reviews', to: 'shop#product_reviews'
   get '/cart', to: 'cart#index'
+  get '/blog/new', to: 'blog#new'
+  get '/blog/main_article', to: 'blog#main_article'
 
   post '/submit_request', to: 'contacts#submit_request'
   post '/add_to_cart/:product_id/:quantity', to: 'cart#add_to_cart'

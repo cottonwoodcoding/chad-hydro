@@ -1,0 +1,9 @@
+%h2.article-title
+  = article['title']
+%blockquote
+  .article-body
+    = article['body_html'].html_safe
+  %footer
+    .article-author
+      - date = article['created_at'].to_datetime.strftime("%D")
+      = "#{article['author']} - #{date}"

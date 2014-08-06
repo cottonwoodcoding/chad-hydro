@@ -1,3 +1,15 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $('.post').dotdotdot
+    ellipsis: '...',
+    wrap: 'letter',
+    row: 1
+
+  $('.panel-group').on 'shown.bs.collapse hidden.bs.collapse', (e) ->
+    $(e.target).siblings().find('.caret-toggle').toggleClass('fa-caret-down fa-caret-right')
+
+  $('.post-title').on 'click', (e) ->
+    e.preventDefault()
+    post = $(@).siblings('.data')
+    $('.article-title').text(post.data('title'))
+    $('.article-body').html(post.data('body'))
+    $('.article-author').text("#{post.data('author')} - #{post.data('date')}")

@@ -1,0 +1,14 @@
+%h2 Create new blog post
+= link_to "Back", '/blog'
+.post-container
+  %form.form-horizontal{role: 'form', method: 'POST', action: '/blog/create'}
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+    .form-group
+      %label.control-lable{for: 'postTitle'} Title
+      %input#postTitle.form-control{name: 'title', type: 'text', 'required' => 'true'}
+    .form-group
+      %textarea.tinymce{rows: 10, name: 'post_body'}
+      = tinymce
+    .form-group
+      .btn-container
+        %button.btn.btn-primary.pull-right{type: 'submit'} Submit
