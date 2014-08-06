@@ -7,7 +7,7 @@
       = render(partial: 'shared/image_slide', locals: {images: @product.images})
     -else
       .product-image.text-center
-        %img.group.list-group-image{:alt => "", :src => image_thumb(@product.id)}
+        %img.group.list-group-image{:alt => "", :src => @product.images.first.src}
     .caption
       .body-container
         %p.group.inner.list-group-item-text.text-center

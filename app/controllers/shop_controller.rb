@@ -35,7 +35,7 @@ class ShopController < ApplicationController
       path = "#{Rails.root}/app/assets/images/#{product.id}-thumb.jpg"
       next if File.exists?(path)
       image = Magick::Image.read(product.images.first.src)
-      image.first.thumbnail(400, 250).write(path)
+      image.first.thumbnail(200, 200).write(path)
     end
   end
 
