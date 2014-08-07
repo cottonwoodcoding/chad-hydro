@@ -9,8 +9,15 @@ $border: 1px solid;
   border-radius: 5px;
 }
 
+.scrollable {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
 .main-article {
-  padding-left: 50px;
+  max-width: 700px;
+  width: 700px;
+  margin-left: 100px;
 }
 
 .panel-title {
@@ -32,4 +39,14 @@ $border: 1px solid;
 .main-article {
   height: 100%;
   overflow-y: scroll;
+}
+
+.article-author {
+  font-style: italic;
+  color: gray;
+}
+
+.comments-title {
+  margin-right: 25px;
+  font-size: 16px;
 }

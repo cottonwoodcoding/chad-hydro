@@ -28,7 +28,15 @@
 
   - if @articles.any?
     - article = @articles.values.first.first
-  .main-article
+  .main-article.pull-left
     = render '/layouts/post', :article => article
-
-
+  .comments
+    .comments-title.pull-left Comments
+    .comment-count
+      = article['comments'].count
+    %a.pull-right{href: '#', 'data-toggle' => 'modal', 'data-target' => '#new_comment'}
+      = fa_icon "pencil"
+      Add Comment
+    %hr
+    .comment-container
+= render '/layouts/new_comment'

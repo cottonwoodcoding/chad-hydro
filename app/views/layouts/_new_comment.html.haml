@@ -1,0 +1,33 @@
+#new_comment.modal.fade{role: 'dialog', 'area-labelledby' => 'newCommentLabel', 'area-hidden' => 'true'}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{type: 'button', 'data-dismiss' => 'modal'}
+          %span &times;
+        %h4#newCommentLabel.modal-title Add New Comment
+      #comment_body.modal-body
+        %form{role: 'form', method: 'POST', action: '/blog/new_comment'}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          %input.comment-article-id.hidden{name: 'article_id'}
+          .form-group.has-feedback
+            %label{for: "name"} Name
+            %div
+              %input#name.form-control{name: 'name', autofocus: "", placeholder: "Enter name", required: "true", type: "text"}/
+          .form-group
+            .checkbox
+              %label
+                %input#anon{type: 'checkbox'} Post anonymously
+                %p.help-block Email is required posting anonymously will hide your name from comments
+          .form-group.has-feedback
+            %label{for: "email"}
+              Email
+            .input-group
+            %input#email.form-control{name: 'email', placeholder: "Enter email address", required: "", type: "email"}
+          .form-group.has-feedback
+            %label{for: "comments"}
+              Comments
+            %div
+              %textarea#comments.form-control{name: 'comment', placeholder: "Enter comments", required: "", rows: "5", type: "text"}
+          .modal-footer
+            %button.btn.btn-default{type: 'button', 'data-dismiss' => 'modal'} Close
+            %button.btn.btn-primary{type: 'submit'} Submit

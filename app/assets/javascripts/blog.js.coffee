@@ -2,7 +2,17 @@ $ ->
   underline = ->
     $('.post-title').removeClass('link-change')
     $('.post-title').each ->
-      $(@).addClass('link-change') if $(@).attr('data-id') == $('.article-title').attr('data-id')
+      if $(@).attr('data-id') == $('.article-title').attr('data-id')
+        $(@).addClass('link-change')
+        $('.comment-article-id').val($(@).attr('data-id'))
+
+  $('#anon').change ->
+    if $(@).is(':checked')
+      $('#name').val('anonymous')
+      $('#name').attr('disabled', 'true')
+    else
+      $('#name').val('')
+      $('#name').prop('disabled', null)
 
   $('.post').dotdotdot
     ellipsis: '...',

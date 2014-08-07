@@ -1,9 +1,10 @@
-%h2.article-title{'data-id' => article['id'].to_i}
-  = article['title']
-%blockquote
-  .article-body
-    = article['body_html'].html_safe
+.article-header
+  %h2.article-title{'data-id' => article['id'].to_i}
+    = article['title']
   %footer
     .article-author
       - date = article['created_at'].to_datetime.strftime("%D")
       = "#{article['author']} - #{date}"
+%blockquote.scrollable
+  .article-body
+    = article['body_html'].html_safe
