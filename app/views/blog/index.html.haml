@@ -9,7 +9,7 @@
       - open = first ? 'in' : ''
       - caret = first ? 'fa-caret-down' : 'fa-caret-right'
       .panel-group{id: "accordion_#{id}"}
-        .panel.panel-default
+        .panel.panel-default.articles-panel
           %h4.panel-title
             %a{'data-toggle' => 'collapse', 'data-parent' => "accordion_#{id}", href: "#collapse#{id}"}
               = date
@@ -30,4 +30,5 @@
     - article = @articles.values.first.first
   .main-article
     = render '/layouts/post', :article => article
+
 
