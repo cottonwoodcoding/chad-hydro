@@ -13,6 +13,7 @@ ChadHydro::Application.routes.draw do
   get '/blog/new', to: 'blog#new'
   get '/blog/main_article', to: 'blog#main_article'
 
+  post '/blog/create', to: 'blog#create'
   post '/submit_request', to: 'contacts#submit_request'
   post '/add_to_cart/:product_id/:quantity', to: 'cart#add_to_cart'
 end

@@ -1,8 +1,8 @@
 $ ->
   underline = ->
-    $('.post-title').removeClass('underline')
+    $('.post-title').removeClass('link-change')
     $('.post-title').each ->
-      $(@).addClass('underline') if $(@).attr('data-id') == $('.article-title').attr('data-id')
+      $(@).addClass('link-change') if $(@).attr('data-id') == $('.article-title').attr('data-id')
 
   $('.post').dotdotdot
     ellipsis: '...',

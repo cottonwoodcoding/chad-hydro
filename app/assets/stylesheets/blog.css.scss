@@ -18,3 +18,20 @@
 .panel-title {
   width: 210px;
 }
+
+.panel-title a {
+  padding-left: 5px;
+}
+
+.panel-body {
+  background: rgb(70,173, 70);
+}
+
+.post-title {
+  color: white;
+}
+
+.main-article {
+  height: 400px;
+  overflow-y: scroll;
+}
