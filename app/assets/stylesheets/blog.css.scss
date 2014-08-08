@@ -51,3 +51,24 @@ $border: 1px solid;
   margin-right: 25px;
   font-size: 16px;
 }
+
+.approval {
+  margin-top: 10px;
+}
+
+.approve {
+  margin-right: 25px;
+  cursor: pointer; cursor: hand;
+}
+
+.delete {
+  cursor: pointer; cursor: hand;
+}
+
+.approval-container {
+  margin-bottom: 10px;
+}
+
+#update {
+  margin-left: 50px;
+}

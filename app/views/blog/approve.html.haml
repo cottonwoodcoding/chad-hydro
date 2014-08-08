@@ -1,0 +1,22 @@
+.approval-container
+  = link_to "Back", blog_path
+  %button#update.btn.btn-sm.btn-primary Save Changes
+.scrollable
+  - @sorted_comments.each do |k, v|
+    %h3
+      = @map[k]
+    - v.each do |comment|
+      .author
+        = "Author: #{comment['author']}"
+      .comment-body
+        = "Comment: #{comment['body']}"
+      .posted-at
+        = "Posted At: #{comment['created_at']}"
+      .approval
+        .approve.pull-left
+          = fa_icon 'check'
+        .delete
+          = fa_icon 'times'
+      %hr
+
+

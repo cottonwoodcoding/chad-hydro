@@ -3,13 +3,14 @@ class BlogController < ApplicationController
 
   def index
     posts = {}
+    @pending_comments = []
     articles = ShopifyAPI::Article.where(blog_id: 6296807).elements
     articles.each do |a|
       date = a.attributes['created_at'].to_datetime.strftime("%B %Y")
       comments = a.comments.elements
       approved_comments = []
       comments.each do |c|
-        approved_comments << c.attributes if c.attributes['status'] == 'published'
+        c.attributes['status'] == 'published' ? (approved_comments << c.attributes) : (@pending_comments << c.attributes)
       end
       a.attributes['comments'] = approved_comments
       posts[date] = [] unless posts.has_key? date
@@ -62,6 +63,21 @@ class BlogController < ApplicationController
       comments << comment
    end
     render partial: '/layouts/comments', :locals => { comments: comments }
+  end
+
+  def approve
+    @sorted_comments = {}
+    @map = {}
+    comments = ShopifyAPI::Comment.where(status: 'unapproved')
+    comments.each do |c|
+      id = c.attributes['article_id']
+      @sorted_comments[id] = [] unless @sorted_comments.has_key? id
+      @sorted_comments[id] << c.attributes
+    end
+    @sorted_comments.keys.each do |k|
+      title = ShopifyAPI::Article.find(k).attributes['title']
+      @map[k] = title
+    end
   end
 
 end

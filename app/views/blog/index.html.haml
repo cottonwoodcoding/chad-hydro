@@ -1,5 +1,7 @@
 - if user_signed_in?
   = link_to "New Post", blog_new_path
+  - if @pending_comments.any?
+    = link_to "Pending comments: #{@pending_comments.count}", blog_approve_path, class: 'pull-right'
 %h4 Articles
 .main-container
   .article-container.pull-left
