@@ -1,3 +1,6 @@
+- if user_signed_in?
+  .remove-article.delete-color{'data-id' => article['id']}
+    = fa_icon 'times', text: 'Remove Article'
 .article-header
   %h2.article-title{'data-id' => article['id'].to_i}
     = article['title']

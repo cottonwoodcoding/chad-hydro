@@ -1,3 +1,5 @@
+- if session[:prev_page]
+  .prev-link.hidden{'data-id' => session[:prev_page]}
 - if user_signed_in?
   = link_to "New Post", blog_new_path
   - if @pending_comments.any?
@@ -24,7 +26,7 @@
                   .post
                     - date = a['created_at'].to_datetime.strftime("%D")
                     .data.hidden{'data-article_id' => a['id'], 'data-title' => a['title'], 'data-author' => a['author'], 'data-body' => a['body_html'], 'data-date' => date}
-                    %a.post-title{href: "#", 'data-id' => a['id']}
+                    %a.post-title{id: "link_#{a['id']}", href: "#", 'data-id' => a['id']}
                       = a['title']
               - first = false
 
@@ -40,6 +42,7 @@
       = fa_icon "pencil"
       Add Comment
     %hr
+    %img.loader.hidden{src: image_path('ajax-loader.gif')}
     .comment-container.scrollable
       = render '/layouts/comments', comments: article['comments']
 = render '/layouts/new_comment'

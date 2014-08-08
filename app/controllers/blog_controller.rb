@@ -39,6 +39,7 @@ class BlogController < ApplicationController
     comment['body'] = params['comment']
     comment['email'] = params['email']
     response = ShopifyAPI::Comment.create(comment)
+    session[:prev_page] = params['article_id']
     if response.errors.messages.any?
         redirect_to blog_path, :error => "Error with comment: #{response.errors.messages.values}"
     else
@@ -55,6 +56,12 @@ class BlogController < ApplicationController
     response = ShopifyAPI::Comment.find(params['id'].to_i).remove
     status = response ? 200 : 500
     render :nothing => true, :status => status
+  end
+
+  def delete_article
+    ShopifyAPI::Article.find(params['id'].to_i).destroy
+    session[:prev_page] = nil
+    render :nothing => true
   end
 
   def update_comments

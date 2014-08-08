@@ -26,6 +26,24 @@ $ ->
     else
       $("#comment_#{id}").removeClass('fade-out')
 
+  $(document).on 'click', '.remove-article', (e) ->
+    e.preventDefault()
+    id = $(@).attr('data-id')
+    $('.main-article').addClass('fade-out')
+    response = confirm('Really delete article?')
+    if response
+      $.ajax '/blog/delete_article',
+        type: 'POST'
+        data:
+          id: id
+        success: ->
+          window.location.reload()
+        error: ->
+          alert("Something went wrong try again")
+    else
+      $('.main-article').removeClass('fade-out')
+
+
   $('#anon').change ->
     if $(@).is(':checked')
       $('#name').val('anonymous')
@@ -75,6 +93,7 @@ $ ->
     $('.article-title').attr('data-id', post.data('article_id'))
     underline()
     $('.comment-container').children().remove()
+    $('.loader').addClass('hidden')
     $.ajax '/blog/update_comments',
       type: 'GET'
       data:
@@ -86,5 +105,20 @@ $ ->
         $('.comment-count').text('0')
         $('.comment-container').append('<p> Error retrieving comments')
 
+  $('#new_comment').on 'shown.bs.modal', ->
+    $('#name').val('')
+    $('#name').attr('disabled', false)
+    $('#anon').attr('checked', false)
+    $('#email').val('')
+    $('#comments').val('')
+
+  $('#new_comment').on 'submit', (e) ->
+    $(@).modal('toggle')
+    $('.loader').removeClass('hidden')
+
+
   window.onload = ->
     underline()
+    link_id = $('.prev-link').attr('data-id')
+    if link_id
+      $("#link_#{link_id}").trigger 'click' unless link_id == $('.post-title')[0].id.split('_')[1]

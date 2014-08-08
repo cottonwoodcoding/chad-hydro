@@ -21,4 +21,5 @@ ChadHydro::Application.routes.draw do
   post '/blog/new_comment', to: 'blog#new_comment'
   post '/blog/process_comments', to: 'blog#process_comments'
   post '/blog/delete_comment', to: 'blog#delete_comment'
+  post '/blog/delete_article', to: 'blog#delete_article'
 end
