@@ -54,10 +54,11 @@ $border: 1px solid;
 
 .approval {
   margin-top: 10px;
+  margin-left: 25px;
+  margin-bottom: 25px;
 }
 
 .approve {
-  margin-right: 25px;
   cursor: pointer; cursor: hand;
 }
 
@@ -65,8 +66,36 @@ $border: 1px solid;
   cursor: pointer; cursor: hand;
 }
 
+.wait {
+  cursor: pointer; cursor: hand;
+}
+
+.remove-comment {
+  cursor: pointer; cursor: hand;
+}
+
 .approval-container {
   margin-bottom: 10px;
+}
+
+.wait-color {
+  color: blue;
+}
+
+.delete-color {
+  color: red;
+}
+
+.approve-color {
+  color: green;
+}
+
+.icon-faded {
+  color: grey
+}
+
+.fade-out {
+  background-color: rgba(255,0,0,.2)
 }
 
 #update {

@@ -1,7 +1,10 @@
 - comments.each do |c|
-  .comment
+  .comment{id: "comment_#{c['id']}"}
+    - if user_signed_in?
+      .remove-comment.delete-color{'data-id' => c['id']}
+        = fa_icon 'times', text: 'Remove Comment'
     .comment-body
       = c['body']
     .comment-author.article-author
       = "#{c['author']} - #{c['created_at'].to_datetime.strftime("%D")}"
-  %hr
+  %hr{id: "hr_#{c['id']}"}

@@ -1,22 +1,35 @@
-.approval-container
-  = link_to "Back", blog_path
-  %button#update.btn.btn-sm.btn-primary Save Changes
-.scrollable
-  - @sorted_comments.each do |k, v|
-    %h3
-      = @map[k]
-    - v.each do |comment|
-      .author
-        = "Author: #{comment['author']}"
-      .comment-body
-        = "Comment: #{comment['body']}"
-      .posted-at
-        = "Posted At: #{comment['created_at']}"
-      .approval
-        .approve.pull-left
-          = fa_icon 'check'
-        .delete
-          = fa_icon 'times'
-      %hr
+%form{role: 'form', method: 'POST', action: '/blog/process_comments'}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  .approval-container
+    = link_to "Back", blog_path
+    %button#update.btn.btn-sm.btn-primary{type: 'submit'} Save Changes
+  .scrollable
+    - @sorted_comments.each do |k, v|
+      %h3
+        = @map[k]
+      - v.each do |comment|
+        .comment-box
+          .author
+            = "Author: #{comment['author']}"
+          .comment-body
+            = "Comment: #{comment['body']}"
+          .posted-at
+            - date = comment['created_at'].to_datetime.strftime("%D %I:%M %p")
+            = "Posted At: #{date}"
+          .approval.radio
+            .wait.pull-left
+              %input.wait-label.fa-radio.hidden{type: 'radio', id: "wait-#{comment['id']}", name: comment['id'], value: 'wait', 'checked' => 'true'}
+              %label{'for' => "wait-#{comment['id']}"}
+                = fa_icon 'question 2x', class: "wait-color icon-#{comment['id']}", id: "icon_wait_#{comment['id']}"
+            .approve.pull-left
+              %input.approve-label.fa-radio.hidden{type: 'radio', id: "approve-#{comment['id']}", name: comment['id'], value: 'approve'}
+              %label{'for' => "approve-#{comment['id']}"}
+                = fa_icon 'check 2x', class: "icon-faded icon-#{comment['id']}", id: "icon_approve_#{comment['id']}"
+            .delete.pull-left
+              %input.delete-label.fa-radio.hidden{type: 'radio', id: "delete-#{comment['id']}", name: comment['id'], value: 'delete'}
+              %label{'for' => "delete-#{comment['id']}"}
+                = fa_icon 'times 2x', class: "icon-faded icon-#{comment['id']}", id: "icon_delete_#{comment['id']}"
+          %p.help-block{id: "help_#{comment['id']}"} * Comment will be ignored
+          %hr
 
 

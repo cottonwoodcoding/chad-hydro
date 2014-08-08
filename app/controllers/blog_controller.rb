@@ -51,6 +51,12 @@ class BlogController < ApplicationController
     end
   end
 
+  def delete_comment
+    response = ShopifyAPI::Comment.find(params['id'].to_i).remove
+    status = response ? 200 : 500
+    render :nothing => true, :status => status
+  end
+
   def update_comments
     comments = []
     article_comments = ShopifyAPI::Comment.where(article_id: params['article_id'], status: 'published').elements
@@ -60,6 +66,7 @@ class BlogController < ApplicationController
       comment['author'] = data['author']
       comment['created_at'] = data['created_at']
       comment['body'] = data['body']
+      comment['id'] = data['id']
       comments << comment
    end
     render partial: '/layouts/comments', :locals => { comments: comments }
@@ -78,6 +85,24 @@ class BlogController < ApplicationController
       title = ShopifyAPI::Article.find(k).attributes['title']
       @map[k] = title
     end
+  end
+
+  def process_comments
+    params.each do |comment, status|
+      approved_count = 0
+      removed_count = 0
+      case status
+      when 'approve'
+        ShopifyAPI::Comment.find(comment.to_i).approve
+        approved_count += 1
+      when 'delete'
+        ShopifyAPI::Comment.find(comment.to_i).remove
+        removed_count += 1
+      else
+        next
+      end
+    end
+    redirect_to blog_path, :notice => "Comments successfully updated"
   end
 
 end
