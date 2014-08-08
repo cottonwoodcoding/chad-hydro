@@ -14,11 +14,11 @@
       - caret = first ? 'fa-caret-down' : 'fa-caret-right'
       .panel-group{id: "accordion_#{id}"}
         .panel.panel-default.articles-panel
-          %h4.panel-title
+          %h4.blog-panel-title.panel-title
             %a{'data-toggle' => 'collapse', 'data-parent' => "accordion_#{id}", href: "#collapse#{id}"}
               = date
             %i.caret-toggle.fa{class: caret}
-        .panel-collapse.collapse{id: "collapse#{id}", class: open}
+        .blog-panel-collapse.panel-collapse.collapse{id: "collapse#{id}", class: open}
           .green.panel-body
             %ul
               - post.each do |a|
