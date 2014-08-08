@@ -50,4 +50,18 @@ class BlogController < ApplicationController
     end
   end
 
+  def update_comments
+    comments = []
+    article_comments = ShopifyAPI::Comment.where(article_id: params['article_id'], status: 'published').elements
+    article_comments.each_with_index do |c, i|
+      data = c.attributes
+      comment = {}
+      comment['author'] = data['author']
+      comment['created_at'] = data['created_at']
+      comment['body'] = data['body']
+      comments << comment
+   end
+    render partial: '/layouts/comments', :locals => { comments: comments }
+  end
+
 end

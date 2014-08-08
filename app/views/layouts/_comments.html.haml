@@ -1,0 +1,7 @@
+- comments.each do |c|
+  .comment
+    .comment-body
+      = c['body']
+    .comment-author.article-author
+      = "#{c['author']} - #{c['created_at'].to_datetime.strftime("%D")}"
+  %hr

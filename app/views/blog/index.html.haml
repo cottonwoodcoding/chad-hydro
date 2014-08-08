@@ -38,5 +38,6 @@
       = fa_icon "pencil"
       Add Comment
     %hr
-    .comment-container
+    .comment-container.scrollable
+      = render '/layouts/comments', comments: article['comments']
 = render '/layouts/new_comment'

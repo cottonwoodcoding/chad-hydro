@@ -30,6 +30,17 @@ $ ->
     $('.article-author').text("#{post.data('author')} - #{post.data('date')}")
     $('.article-title').attr('data-id', post.data('article_id'))
     underline()
+    $('.comment-container').children().remove()
+    $.ajax '/blog/update_comments',
+      type: 'GET'
+      data:
+        article_id: post.data('article_id')
+      success: (data) ->
+        $('.comment-container').append(data)
+        $('.comment-count').text($('.comment').length)
+      error: (data) ->
+        $('.comment-count').text('0')
+        $('.comment-container').append('<p> Error retrieving comments')
 
   window.onload = ->
     underline()
