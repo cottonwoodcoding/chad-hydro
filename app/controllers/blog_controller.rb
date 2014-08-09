@@ -41,6 +41,7 @@ class BlogController < ApplicationController
   def create
     ShopifyAPI::Article.create(blog_id: 6296807, title: params['title'],
                                   body_html: params['post_body'], author: current_user.name)
+    session[:prev_page] = nil
     redirect_to blog_path
   end
 
@@ -78,6 +79,7 @@ class BlogController < ApplicationController
 
   def update_comments
     comments = []
+    session['article_id'] = params['article_id']
     article_comments = ShopifyAPI::Comment.where(article_id: params['article_id'], status: 'published').elements
     article_comments.each_with_index do |c, i|
       data = c.attributes
