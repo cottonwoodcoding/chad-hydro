@@ -14,7 +14,9 @@ ChadHydro::Application.routes.draw do
   get '/blog/main_article', to: 'blog#main_article'
   get '/blog/update_comments'
   get '/blog/approve'
+  get '/blog/edit', to: 'blog#edit'
 
+  post '/blog/update', to: 'blog#update'
   post '/blog/create', to: 'blog#create'
   post '/submit_request', to: 'contacts#submit_request'
   post '/add_to_cart/:product_id/:quantity', to: 'cart#add_to_cart'

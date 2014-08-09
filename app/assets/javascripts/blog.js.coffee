@@ -28,7 +28,7 @@ $ ->
 
   $(document).on 'click', '.remove-article', (e) ->
     e.preventDefault()
-    id = $(@).attr('data-id')
+    id = $(@).siblings('.article-header').find('h2').attr('data-id')
     $('.main-article').addClass('fade-out')
     response = confirm('Really delete article?')
     if response
@@ -42,7 +42,6 @@ $ ->
           alert("Something went wrong try again")
     else
       $('.main-article').removeClass('fade-out')
-
 
   $('#anon').change ->
     if $(@).is(':checked')
@@ -122,3 +121,6 @@ $ ->
     link_id = $('.prev-link').attr('data-id')
     if link_id
       $("#link_#{link_id}").trigger 'click' unless link_id == $('.post-title')[0].id.split('_')[1]
+    if tinyMCE.activeEditor and tinyMCE.activeEditor.id == 'edit'
+      body = $('.body-html').attr('data-body')
+      tinyMCE.activeEditor.setContent(body)

@@ -26,6 +26,18 @@ class BlogController < ApplicationController
   def new
   end
 
+  def edit
+    @article = ShopifyAPI::Article.find(params['id'].to_i)
+  end
+
+  def update
+    article = ShopifyAPI::Article.find(params['id'])
+    article.attributes['body_html'] = params['post_body']
+    article.attributes['title'] = params['title']
+    article.save
+    redirect_to blog_path
+  end
+
   def create
     ShopifyAPI::Article.create(blog_id: 6296807, title: params['title'],
                                   body_html: params['post_body'], author: current_user.name)

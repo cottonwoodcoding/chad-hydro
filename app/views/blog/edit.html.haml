@@ -1,0 +1,17 @@
+%h2 Edit blog post
+= link_to "Back", '/blog'
+.post-container
+  %form.form-horizontal{role: 'form', method: 'POST', action: '/blog/update'}
+    %input.hidden{name: 'id', value: @article.attributes['id']}
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+    .form-group
+      %label.control-lable{for: 'postTitle'} Title
+      - content = @article.attributes
+      %input#postTitle.form-control{name: 'title', value: content['title'], type: 'text', 'required' => 'true'}
+    .form-group
+      .body-html.hidden{'data-body' => content['body_html']}
+      %textarea.tinymce#edit{rows: 10, name: 'post_body', value: content['body_html']}
+      = tinymce
+    .form-group
+      .btn-container
+        %button.btn.btn-primary.pull-right{type: 'submit'} Submit

@@ -1,6 +1,7 @@
 - if user_signed_in?
-  .remove-article.delete-color{'data-id' => article['id']}
+  .remove-article.delete-color.pull-left{'data-id' => article['id']}
     = fa_icon 'times', text: 'Remove Article'
+  = link_to fa_icon('edit', text: "Edit"), blog_edit_path({:id => article['id']}) , class: 'edit-article approve-color'
 .article-header
   %h2.article-title{'data-id' => article['id'].to_i}
     = article['title']
