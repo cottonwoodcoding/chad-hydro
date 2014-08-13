@@ -3,8 +3,8 @@
     - if user_signed_in?
       .remove-comment.delete-color{'data-id' => c['id']}
         = fa_icon 'times', text: 'Remove Comment'
-    .comment-body
+    .comment-body.font-n
       = c['body']
-    .comment-author.article-author
+    .comment-author.article-author.font-l
       = "#{c['author']} - #{c['created_at'].to_datetime.strftime("%D")}"
   %hr{id: "hr_#{c['id']}"}

@@ -1,19 +1,19 @@
 %form{role: 'form', method: 'POST', action: '/blog/process_comments'}
   = hidden_field_tag :authenticity_token, form_authenticity_token
   .approval-container
-    = link_to "Back", blog_path
-    %button#update.btn.btn-sm.btn-primary{type: 'submit'} Save Changes
+    = link_to "Back", blog_path, class: "font-l"
+    %button#update.btn.btn-sm.btn-primary.font-l{type: 'submit'} Save Changes
   .scrollable
     - @sorted_comments.each do |k, v|
-      %h3
+      %h3.font-b
         = @map[k]
       - v.each do |comment|
         .comment-box
-          .author
+          .author.font-n
             = "Author: #{comment['author']}"
-          .comment-body
+          .comment-body.font-n
             = "Comment: #{comment['body']}"
-          .posted-at
+          .posted-at.font-n
             - date = comment['created_at'].to_datetime.strftime("%D %I:%M %p")
             = "Posted At: #{date}"
           .approval.radio
@@ -29,7 +29,5 @@
               %input.delete-label.fa-radio.hidden{type: 'radio', id: "delete-#{comment['id']}", name: comment['id'], value: 'delete'}
               %label{'for' => "delete-#{comment['id']}"}
                 = fa_icon 'times 2x', class: "icon-faded icon-#{comment['id']}", id: "icon_delete_#{comment['id']}"
-          %p.help-block{id: "help_#{comment['id']}"} * Comment will be ignored
+          %p.help-block.font-l{id: "help_#{comment['id']}"} * Comment will be ignored
           %hr
-
-

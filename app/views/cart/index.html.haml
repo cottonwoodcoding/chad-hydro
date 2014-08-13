@@ -1,8 +1,8 @@
 #cart-header.text-center
-  %h3
+  %h3.font-n
     Shopping Cart - Total:
-    %span.text-success
+    %span.text-success.font-n
       = number_to_currency(@total)
-  %a{href: "http://heritage-organics.myshopify.com/cart/#{perma_link_append}", role: 'button', class: 'btn btn-primary', target: '_blank'} Checkout
+  %a{href: "http://heritage-organics.myshopify.com/cart/#{perma_link_append}", role: 'button', class: 'btn btn-primary font-l', target: '_blank'} Checkout
 %hr
 = render(partial: 'shop/products', locals: {products: @products, cart: true})

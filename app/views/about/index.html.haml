@@ -1,14 +1,14 @@
 .row
-  %h2.text-center About Us
+  %h2.text-center.font-n About Us
   .clearfix
   %hr
-  .well.about-us
+  .well.about-us.font-l
     Moonlight Garden Supply is Utah's premier Organic & Hydroponic garden supply store. We are committed to providing the best products and knowledge the Organic & Hydroponic industry has to offer. From beginner to expert we have everything you need to keep your indoor garden thriving. We believe everyone should have access to clean healthy produce year round regardless of your climate. Our expert staff can take the hassle out of designing your indoor garden space to ensure maximum yields. We have licensed, insured Contractors in-house that can build your grow space out start to finish. Making make your path to healthy sustainable produce as painless as possible. MLGS Ships discreetly within the US and Canada.
   %hr
   .clearfix
 .row
   .c-wrapper
-    %h2.text-center Featured Products
+    %h2.text-center.font-db Featured Products
     #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
       .carousel-inner
         - @featured_products.each_with_index do |product, index|
@@ -16,13 +16,13 @@
             .item.active
               %a{:href => product_url(product.id)}
                 %img{:src => image_thumb(product.id) }
-              .carousel-caption
+              .carousel-caption.font-l
                 = product.title
           - else
             .item
               %a{:href => product_url(product.id)}
                 %img{:src => image_thumb(product.id) }
-              .carousel-caption
+              .carousel-caption.font-l
                 = product.title
       %a.left.carousel-control{"data-slide" => "prev", href: "#carousel-example-generic", role: "button"}
         %span.glyphicon.glyphicon-chevron-left

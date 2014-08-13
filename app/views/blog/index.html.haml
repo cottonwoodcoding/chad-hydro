@@ -1,10 +1,10 @@
 - if session[:prev_page]
   .prev-link.hidden{'data-id' => session[:prev_page]}
 - if user_signed_in?
-  = link_to "New Post", blog_new_path
+  = link_to "New Post", blog_new_path, class: 'font-l'
   - if @pending_comments.any?
-    = link_to "Pending comments: #{@pending_comments.count}", blog_approve_path, class: 'pull-right'
-%h4 Articles
+    = link_to "Pending comments: #{@pending_comments.count}", blog_approve_path, class: 'pull-right font-l'
+%h4.font-b Articles
 .main-container
   .article-container.pull-left
     - first = true
@@ -14,7 +14,7 @@
       - caret = first ? 'fa-caret-down' : 'fa-caret-right'
       .panel-group{id: "accordion_#{id}"}
         .panel.panel-default.articles-panel
-          %h4.blog-panel-title.panel-title
+          %h4.font-n.blog-panel-title.panel-title
             %a{'data-toggle' => 'collapse', 'data-parent' => "accordion_#{id}", href: "#collapse#{id}"}
               = date
             %i.caret-toggle.fa{class: caret}
@@ -26,7 +26,7 @@
                   .post
                     - date = a['created_at'].to_datetime.strftime("%D")
                     .data.hidden{'data-article_id' => a['id'], 'data-title' => a['title'], 'data-author' => a['author'], 'data-body' => a['body_html'], 'data-date' => date}
-                    %a.post-title{id: "link_#{a['id']}", href: "#", 'data-id' => a['id']}
+                    %a.font-l.post-title{id: "link_#{a['id']}", href: "#", 'data-id' => a['id']}
                       = a['title']
               - first = false
 
@@ -35,8 +35,8 @@
   .main-article.pull-left
     = render '/layouts/post', :article => article
   .comments
-    .comments-title.pull-left Comments
-    .comment-count
+    .comments-title.pull-left.font-b Comments
+    .comment-count.font-b
       = article['comments'].count
     %a.pull-right{href: '#', 'data-toggle' => 'modal', 'data-target' => '#new_comment'}
       = fa_icon "pencil"

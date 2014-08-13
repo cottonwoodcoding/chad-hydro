@@ -1,18 +1,18 @@
-%h2#shop_header.text-center
+%h2#shop_header.text-center.font-m
   = "Shop - #{@category.titleize}"
 #accordion.panel-group.text-center
   .panel.panel-default
     .panel-heading
-      %h4.panel-title
+      %h4.panel-title.font-n
         %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
           Categories
     #collapseOne.panel-collapse.collapse.in
       .panel-body
         .category
-          %a{href: '/shop/category/all'} All
+          %a.font-l{href: '/shop/category/all'} All
         - @categories.each do |key, value|
           .category
-            %a{href: "/shop/category/#{key}"}
+            %a.font-l{href: "/shop/category/#{key}"}
               = key.pluralize
 .container-fluid
   #products.row.list-group

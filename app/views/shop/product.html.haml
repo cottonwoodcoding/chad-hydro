@@ -1,6 +1,6 @@
 = render(partial: 'product_nav', locals: {position: 1})
 .item
-  %h2
+  %h2.font-m
     = @product.title
   .product
     - if @product.images.count > 1
@@ -10,14 +10,14 @@
         %img.group.list-group-image{:alt => "", :src => @product.images.first.src}
     .caption
       .body-container
-        %p.group.inner.list-group-item-text.text-center
+        %p.font-n.group.inner.list-group-item-text.text-center
           = strip_tags @product.body_html
     .footer
       .row
         .col-xs-12.col-md-6
-          %p.lead.text-success
+          %p.font-n.lead.text-success
             Price:
             = number_to_currency(@product.variants.first.price)
         .col-xs-12.col-md-6
-          %a.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{@product.id}/1"} Add To Cart
-          = button_to("Back", :back, {method: 'get', class: 'button-margin btn pull-right btn-sm'})
+          %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{@product.id}/1"} Add To Cart
+          = button_to("Back", :back, {method: 'get', class: 'button-margin btn pull-right btn-sm font-l'})

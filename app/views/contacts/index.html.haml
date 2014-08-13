@@ -4,8 +4,8 @@
       .panel
         .panel-heading
           %h3
-            %i.icon-map-marker.main-color
-            Location
+            %i.icon-map-marker.main-color.font-n
+            .font-n Location
         .panel-body
           #map{:style => "width: 100%; height: 200px;"}
   %hr
@@ -15,56 +15,56 @@
           .panel-heading
             %h3
               %i.icon-pushpin.main-color
-              Our Location
+              .font-n Our Location
           .panel-body
             %address
-              %strong Moonlight Garden Supply
+              %strong.font-n Moonlight Garden Supply
               %br
-                150 W. Commonwealth Avenue
+                .font-n 150 W. Commonwealth Avenue
                 %br
-                  Salt Lake City, UT 84115
+                  .font-n Salt Lake City, UT 84115
                   %br
                     %i.icon-phone-sign
-                    (801) 793-9587
+                    .font-n (801) 793-9587
         .panel
           .panel-heading
             %h3
               %i.icon-time.main-color
-              Business Hours
+              .font-n Business Hours
           .panel-body
             %table.table.table-hover
               %thead
                 %tr
-                  %th Day
-                  %th Time
+                  %th.font-n Day
+                  %th.font-n Time
               %tbody
                 %tr.success
-                  %td Monday
-                  %td 8:00 to 6:00
+                  %td.font-l Monday
+                  %td.font-l 8:00 to 6:00
                 %tr.success
-                  %td Tuesday
-                  %td 8:00 to 6:00
+                  %td.font-l Tuesday
+                  %td.font-l 8:00 to 6:00
                 %tr.success
-                  %td Wednesday
-                  %td 8:00 to 6:00
+                  %td.font-l Wednesday
+                  %td.font-l 8:00 to 6:00
                 %tr.success
-                  %td Thursday
-                  %td 8:00 to 6:00
+                  %td.font-l Thursday
+                  %td.font-l 8:00 to 6:00
                 %tr.success
-                  %td Friday
-                  %td 8:00 to 6:00
+                  %td.font-l Friday
+                  %td.font-l 8:00 to 6:00
                 %tr.success
-                  %td Saturday
-                  %td 9:00 to 9:00
+                  %td.font-l Saturday
+                  %td.font-l 9:00 to 9:00
                 %tr.danger
-                  %td Sunday
-                  %td Closed
+                  %td.font-l Sunday
+                  %td.font-l Closed
       .col-12.col-lg-8
         .panel
           .panel-heading
             %h3
               %i.icon-envelope.main-color
-              Feel free to contact us
+              .font-n Feel free to contact us
           .panel-body
             %form#feedbackForm{:role => "form"}
               .form-group
@@ -76,4 +76,4 @@
               .form-group
                 %textarea#message.form-control{:cols => "100", :name => "message", :placeholder => "Message", :rows => "10"}
                 %span.help-block{:style => "display: none;"} Please enter a message.
-              %button#feedbackSubmit.btn.btn-primary.btn-lg{:style => "display: block; margin-top: 10px;", :type => "submit"} Send Feedback
+              %button#feedbackSubmit.btn.btn-primary.btn-lg.font-l{:style => "display: block; margin-top: 10px;", :type => "submit"} Send Feedback

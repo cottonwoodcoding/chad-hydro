@@ -1,11 +1,11 @@
-%h2 Edit blog post
-= link_to "Back", '/blog'
+= link_to "Back", '/blog', class: 'font-l'
+%h2.font-n Edit blog post
 .post-container
   %form.form-horizontal{role: 'form', method: 'POST', action: '/blog/update'}
     %input.hidden{name: 'id', value: @article.attributes['id']}
     = hidden_field_tag :authenticity_token, form_authenticity_token
     .form-group
-      %label.control-lable{for: 'postTitle'} Title
+      %label.control-lable.font-n{for: 'postTitle'} Title
       - content = @article.attributes
       %input#postTitle.form-control{name: 'title', value: content['title'], type: 'text', 'required' => 'true'}
     .form-group
@@ -14,4 +14,4 @@
       = tinymce
     .form-group
       .btn-container
-        %button.btn.btn-primary.pull-right{type: 'submit'} Submit
+        %button.btn.btn-primary.pull-right.font-l{type: 'submit'} Submit

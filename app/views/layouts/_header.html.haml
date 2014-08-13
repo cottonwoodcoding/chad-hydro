@@ -10,7 +10,7 @@
         #logo.pull-left
           = image_tag('moonlight-logo.png', {width: '100px;', id: 'logo'})
       #company-name.pull-left
-        .nav-header Moonlight Garden Supply
+        .nav-header.font-b Moonlight Garden Supply
         #social-media-links.pull-right
           = link_to 'http://www.facebook.com/moonlightgardensupply', {target: '_blank'} do
             = fa_icon "facebook-square 2x"
@@ -23,13 +23,13 @@
     .collapse.navbar-collapse#nav-items.custom-nav.navbar-right
       %ul.nav.navbar-nav
         %li
-          = link_to("About", '/about', {class: 'nav_item'})
+          = link_to("About", '/about', {class: 'nav_item font-m'})
         %li
-          = link_to("Blog", '/blog', {class: 'nav_item'})
+          = link_to("Blog", '/blog', {class: 'nav_item font-m'})
         %li
-          = link_to("Shop", '/shop', {class: 'nav_item'})
+          = link_to("Shop", '/shop', {class: 'nav_item font-m'})
         %li
-          = link_to("Contact", '/contact', {class: 'nav_item'})
+          = link_to("Contact", '/contact', {class: 'nav_item font-m'})
         %li
           %a{:href => "/cart"}
             = fa_icon "shopping-cart"
@@ -38,9 +38,9 @@
           %a.settings.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
             %b.fa.fa-gears
           %ul.dropdown-menu
-            %li
+            %li.font-m
               %a{href: '#'} Subscribe
-            %li
+            %li.font-m
               - if user_signed_in?
                 = link_to 'Logout', destroy_user_session_path, :method => :delete, :calss => 'delete'
               - else
