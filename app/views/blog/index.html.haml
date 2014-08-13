@@ -4,37 +4,38 @@
   = link_to "New Post", blog_new_path, class: 'font-l'
   - if @pending_comments.any?
     = link_to "Pending comments: #{@pending_comments.count}", blog_approve_path, class: 'pull-right font-l'
-%h4.font-b Articles
-.main-container
-  .article-container.pull-left
-    - first = true
-    - @articles.sort_by{|k, v| k.to_datetime}.reverse!.each do |date, post|
-      - id = date.gsub(" ", "_")
-      - open = first ? 'in' : ''
-      - caret = first ? 'fa-caret-down' : 'fa-caret-right'
-      .panel-group{id: "accordion_#{id}"}
-        .panel.panel-default.articles-panel
-          %h4.font-n.blog-panel-title.panel-title
-            %a{'data-toggle' => 'collapse', 'data-parent' => "accordion_#{id}", href: "#collapse#{id}"}
-              = date
-            %i.caret-toggle.fa{class: caret}
-        .blog-panel-collapse.panel-collapse.collapse{id: "collapse#{id}", class: open}
-          .green.panel-body
-            %ul
-              - post.each do |a|
-                %li
-                  .post
-                    - date = a['created_at'].to_datetime.strftime("%D")
-                    .data.hidden{'data-article_id' => a['id'], 'data-title' => a['title'], 'data-author' => a['author'], 'data-body' => a['body_html'], 'data-date' => date}
-                    %a.font-l.post-title{id: "link_#{a['id']}", href: "#", 'data-id' => a['id']}
-                      = a['title']
-              - first = false
+.container-fluid
+  .main-container.col-md-3
+    %h4.font-b Articles
+    .article-container
+      - first = true
+      - @articles.sort_by{|k, v| k.to_datetime}.reverse!.each do |date, post|
+        - id = date.gsub(" ", "_")
+        - open = first ? 'in' : ''
+        - caret = first ? 'fa-caret-down' : 'fa-caret-right'
+        .panel-group{id: "accordion_#{id}"}
+          .panel.panel-default.articles-panel
+            %h4.font-n.blog-panel-title.panel-title
+              %a{'data-toggle' => 'collapse', 'data-parent' => "accordion_#{id}", href: "#collapse#{id}"}
+                = date
+              %i.caret-toggle.fa{class: caret}
+          .blog-panel-collapse.panel-collapse.collapse{id: "collapse#{id}", class: open}
+            .green.panel-body
+              %ul
+                - post.each do |a|
+                  %li
+                    .post
+                      - date = a['created_at'].to_datetime.strftime("%D")
+                      .data.hidden{'data-article_id' => a['id'], 'data-title' => a['title'], 'data-author' => a['author'], 'data-body' => a['body_html'], 'data-date' => date}
+                      %a.font-l.post-title{id: "link_#{a['id']}", href: "#", 'data-id' => a['id']}
+                        = a['title']
+                - first = false
 
-  - if @articles.any?
-    - article = @articles.values.first.first
-  .main-article.pull-left
+    - if @articles.any?
+      - article = @articles.values.first.first
+  .main-article.col-md-5
     = render '/layouts/post', :article => article
-  .comments
+  .comments.col-md-2
     .comments-title.pull-left.font-b Comments
     .comment-count.font-b
       = article['comments'].count
