@@ -26,8 +26,13 @@ class BlogController < ApplicationController
   def new
   end
 
+  def reset_article_id
+    session[:article_id] = params['id']
+    render :nothing => true
+  end
+
   def edit
-    @article = ShopifyAPI::Article.find(params['id'].to_i)
+    @article = ShopifyAPI::Article.find(session[:article_id].to_i)
   end
 
   def update

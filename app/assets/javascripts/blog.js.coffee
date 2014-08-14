@@ -124,3 +124,8 @@ $ ->
     if tinyMCE.activeEditor and tinyMCE.activeEditor.id == 'edit'
       body = $('.body-html').attr('data-body')
       tinyMCE.activeEditor.setContent(body)
+    if $('.main-article')
+      $.ajax '/blog/reset_article_id',
+        type: 'POST'
+        data:
+          id: $('.article-title').attr('data-id')
