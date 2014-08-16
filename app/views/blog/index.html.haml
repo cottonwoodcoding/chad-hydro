@@ -1,6 +1,6 @@
 - if session[:prev_page]
   .prev-link.hidden{'data-id' => session[:prev_page]}
-- if user_signed_in?
+- if admin?
   = link_to "New Post", blog_new_path, class: 'font-l'
   - if @pending_comments.any?
     = link_to "Pending comments: #{@pending_comments.count}", blog_approve_path, class: 'pull-right font-l'

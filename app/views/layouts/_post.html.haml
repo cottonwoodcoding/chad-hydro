@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if admin?
   .remove-article.delete-color.pull-left{'data-id' => article['id']}
     = fa_icon 'times', text: 'Remove Article'
   = link_to fa_icon('edit', text: "Edit"), blog_edit_path({:id => article['id']}) , class: 'edit-article approve-color'

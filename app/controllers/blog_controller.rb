@@ -62,7 +62,7 @@ class BlogController < ApplicationController
     if response.errors.messages.any?
         redirect_to blog_path, :error => "Error with comment: #{response.errors.messages.values}"
     else
-      if user_signed_in?
+      if admin?
         response.approve
         redirect_to blog_path
       else

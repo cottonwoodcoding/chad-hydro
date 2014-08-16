@@ -1,6 +1,6 @@
 - comments.each do |c|
   .comment{id: "comment_#{c['id']}"}
-    - if user_signed_in?
+    - if admin?
       .remove-comment.delete-color{'data-id' => c['id']}
         = fa_icon 'times', text: 'Remove Comment'
     .comment-body.font-n
