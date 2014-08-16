@@ -7,6 +7,11 @@ module CartHelper
   end
 
   def perma_link_append
-    @cart.map{|k,v| "#{k}:#{v}"}.join(',')
+    cart_for_url = {}
+    variant_ids = @cart.each do |key, value|
+      variant_id = ShopifyAPI::Product.find(key).variants.first.id
+      cart_for_url[variant_id] = value
+    end
+    cart_for_url.map{|k,v| "#{k}:#{v}"}.join(',')
   end
 end

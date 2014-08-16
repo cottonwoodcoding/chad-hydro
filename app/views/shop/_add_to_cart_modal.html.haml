@@ -1,0 +1,18 @@
+#add_to_cart_modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
+          %span.sr-only Close
+        %h4.modal-title
+          .span.modal-product-title
+      .modal-body
+        %form.form-horizontal{:role => "form"}
+          .form-group
+            %label.col-sm-2.control-label{:for => "product_quantity"} Quantity
+            .col-sm-10
+              %input#product_quantity.form-control{:type => "number", :required => 'required', value: '1'}
+      .modal-footer
+        %button.font-l.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+        %a#modal_add_to_cart{:class => 'font-l btn btn-primary', :role => "button"} Add To Cart

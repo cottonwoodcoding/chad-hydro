@@ -16,7 +16,11 @@
             %p.lead.text-success.font-n
               Price:
               = number_to_currency(product.variants.first.price)
+              - if defined?(cart)
+                %br
+                Quantity:
+                = session['cart'][product.id]
           .col-xs-12.col-md-12
             - unless defined?(cart)
-              %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{product.id}/1"} Add To Cart
+              %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{product.id}/1", :value => product.title} Add To Cart
             %a.font-l.btn.btn-success.btn-sm.pull-right.button-margin{:href => product_url(product.id)} More Details
