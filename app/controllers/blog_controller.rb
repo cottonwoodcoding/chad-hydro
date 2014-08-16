@@ -1,5 +1,5 @@
 class BlogController < ApplicationController
-  before_action :authenticate_user!, only: [:reset_article_id, :edit, :update, :new, :create, :delete_comment, :delete_article, :updte_comments, :approve, :process_comments]
+  before_action :authenticate_user!, only: [:edit, :update, :new, :create, :delete_comment, :delete_article, :updte_comments, :approve, :process_comments]
   respond_to :html
 
   def index

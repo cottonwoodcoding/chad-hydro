@@ -1,5 +1,5 @@
 ChadHydro::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   root 'about#index'
 
   get '/about', to: 'about#index'
