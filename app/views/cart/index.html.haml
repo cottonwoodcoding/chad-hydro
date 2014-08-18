@@ -1,9 +1,15 @@
-#cart-header.text-center
-  %h3.font-n
-    Shopping Cart - Total:
-    %span.text-success.font-n
-      = number_to_currency(@total)
-  %a{href: "http://heritage-organics.myshopify.com/cart/#{perma_link_append}", role: 'button', class: 'btn btn-primary font-l', target: '_blank'} Checkout
-%hr
-= render(partial: 'shop/products', locals: {products: @products, cart: true})
-= render(partial: 'remove_from_cart_modal')
+- if @products.blank?
+  %h3.font-n.text-center
+    You don't have anything in your cart.
+    %br
+    %a{href: '/shop'} Go Shopping!
+- else
+  #cart-header.text-center
+    %h3.font-n
+      Shopping Cart - Total:
+      %span.text-success.font-n
+        = number_to_currency(@total)
+    %a{href: "http://heritage-organics.myshopify.com/cart/#{perma_link_append}", role: 'button', class: 'btn btn-primary font-l', target: '_blank'} Checkout
+  %hr
+  = render(partial: 'shop/products', locals: {products: @products, cart: true})
+  = render(partial: 'remove_from_cart_modal')
