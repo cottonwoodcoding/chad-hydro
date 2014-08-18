@@ -24,4 +24,19 @@ class CartController < ApplicationController
       render nothing: true, status: 400 and return
     end
   end
+
+  def remove_from_cart
+    begin
+      quantity_to_remove = params['quantity'].to_i.abs
+      product_id = params['product_id'].to_i
+      product_quantity = @cart[product_id]
+      quantity_to_remove >= product_quantity ? session['cart'].delete(product_id) : session['cart'][product_id] -= quantity_to_remove
+      flash[:notice] = "Your shopping cart has been successfully updated."
+      render nothing: true, status: 200 and return
+    rescue => e
+      logger.error e
+      flash[:alert] = "There was an error removing the product from your cart. Please try again."
+      render nothing: true, status: 400 and return
+    end
+  end
 end

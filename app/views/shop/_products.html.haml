@@ -21,6 +21,9 @@
                 Quantity:
                 = session['cart'][product.id]
           .col-xs-12.col-md-12
-            - unless defined?(cart)
-              %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{product.id}/1", :value => product.title} Add To Cart
-            %a.font-l.btn.btn-success.btn-sm.pull-right.button-margin{:href => product_url(product.id)} More Details
+            %a.font-l.btn.btn-success.btn-sm.pull-right{:href => product_url(product.id)} More Details
+            - if defined?(cart)
+              %a.font-l.remove_from_cart.btn.btn-warning.btn-sm.pull-right.button-margin{:href => "/remove_from_cart/#{product.id}/1", :value => product.id} Remove
+            - else
+              %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right.button-margin{:href => "/add_to_cart/#{product.id}/1", :value => product.title} Add To Cart
+

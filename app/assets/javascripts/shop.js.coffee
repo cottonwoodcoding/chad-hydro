@@ -31,16 +31,3 @@ $ ->
     $addToCartModal.find('.modal-product-title').html($(e.target).attr('value'))
     $('#modal_add_to_cart').attr('href', $(e.target).attr('href'))
 
-  $('#modal_add_to_cart').click (e) ->
-    e.preventDefault()
-    href = $(e.target).attr('href')
-    quantity = $('#product_quantity').val()
-    href = href.replace(href.substring(href.lastIndexOf("/"), href.length), "/#{quantity}")
-    $.ajax
-      type: 'POST'
-      url: href
-      success: (data) ->
-        window.location.reload()
-      error: (data) ->
-        window.location.reload()
-
