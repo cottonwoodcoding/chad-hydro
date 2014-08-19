@@ -1,5 +1,14 @@
 $border: 1px solid;
 
+@media (max-width: 991px) {
+  .main-article {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: auto !important;
+  }
+}
+
+
 .articles-panel {
   border: $border !important;
 }
