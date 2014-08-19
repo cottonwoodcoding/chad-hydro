@@ -1,4 +1,6 @@
 class BlogController < ApplicationController
+  include ApplicationHelper
+
   before_action :authenticate_user!, only: [:edit, :update, :new, :create, :delete_comment, :delete_article, :updte_comments, :approve, :process_comments]
   respond_to :html
 
@@ -64,14 +66,13 @@ class BlogController < ApplicationController
     session[:prev_page] = params['article_id']
     if response.errors.messages.any?
         redirect_to blog_path, :error => "Error with comment: #{response.errors.messages.values}"
+    elsif admin?
+      response.approve
+      redirect_to blog_path and return
     else
-      if admin?
-        response.approve
-        redirect_to blog_path
-      else
-        redirect_to blog_path, :notice => 'Your comment has been submitted for approval'
-      end
+      redirect_to blog_path, :notice => 'Your comment has been submitted for approval'
     end
+
   end
 
   def delete_comment

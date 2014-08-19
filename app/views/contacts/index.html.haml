@@ -20,14 +20,23 @@
             %address
               %strong.font-m Moonlight Garden Supply
               %br
-                .font-n 150 W. Commonwealth Avenue
+                = fa_icon "edit" if admin?
+                Address:
+                .font-n 1530 S. State Street
+                .font-n Salt Lake City, UT 84115
                 %br
-                  .font-n Salt Lake City, UT 84115
-                  %br
-                    %i.icon-phone-sign
-                    .font-n (801) 793-9587
+                  %i.icon-phone-sign
+                  = fa_icon "edit" if admin?
+                  Toll Free Number:
+                  .font-n (800) 888-8888
+                %br
+                  %i.icon-phone-sign
+                  = fa_icon "edit" if admin?
+                  Local Number:
+                  .font-n (801) 793-9587
         .panel
           .panel-heading
+            = fa_icon "edit" if admin?
             %h3
               %i.icon-time.main-color
               .font-m Business Hours

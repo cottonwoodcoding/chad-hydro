@@ -11,6 +11,8 @@
           = image_tag('moonlight-logo.png', {width: '100px;', id: 'logo'})
       #company-name.pull-left
         .nav-header.font-db Moonlight Garden Supply
+        #company-phone.font-m
+          = number_to_phone("8008888888", area_code: true, country_code: 1, delimiter: "-")
         #social-media-links.pull-right
           = link_to 'http://www.facebook.com/moonlightgardensupply', {target: '_blank'} do
             = fa_icon "facebook-square 2x"

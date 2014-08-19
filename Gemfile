@@ -14,6 +14,7 @@ gem 'devise'
 gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'tinymce-rails'
+gem 'geocoder'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'
