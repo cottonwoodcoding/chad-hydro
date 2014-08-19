@@ -1,0 +1,23 @@
+%h1 Listing profiles
+
+%table
+  %tr
+    %th Customer
+    %th Address
+    %th Order ids
+    %th
+    %th
+    %th
+
+  - @profiles.each do |profile|
+    %tr
+      %td= profile.customer_id
+      %td= profile.address
+      %td= profile.order_ids
+      %td= link_to 'Show', profile
+      %td= link_to 'Edit', edit_profile_path(profile)
+      %td= link_to 'Destroy', profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Profile', new_profile_path

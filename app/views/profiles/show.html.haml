@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Customer:
+  = @profile.customer_id
+%p
+  %b Address:
+  = @profile.address
+%p
+  %b Order ids:
+  = @profile.order_ids
+
+= link_to 'Edit', edit_profile_path(@profile)
+\|
+= link_to 'Back', profiles_path

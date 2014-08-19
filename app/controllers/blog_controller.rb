@@ -45,8 +45,11 @@ class BlogController < ApplicationController
   end
 
   def create
+    first_name = current_user.first_name
+    last_name = current_user.last_name
+    name = "#{first_name} #{last_name}"
     ShopifyAPI::Article.create(blog_id: 6296807, title: params['title'],
-                                  body_html: params['post_body'], author: current_user.name)
+                                  body_html: params['post_body'], author: name)
     session[:prev_page] = nil
     redirect_to blog_path
   end

@@ -1,4 +1,6 @@
 ChadHydro::Application.routes.draw do
+  resources :profiles
+
   devise_for :users, :controllers => { :registrations => "registrations" }
   root 'about#index'
 
