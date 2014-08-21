@@ -19,6 +19,7 @@ ChadHydro::Application.routes.draw do
   get '/blog/approve'
   get '/blog/edit', to: 'blog#edit'
   get '/admin_settings', to: 'admin#settings'
+  get '/newsletter', to: 'admin#newsletter'
 
   post '/blog/update', to: 'blog#update'
   post '/blog/create', to: 'blog#create'

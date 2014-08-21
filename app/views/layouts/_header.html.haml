@@ -44,7 +44,7 @@
               %li.font-m
                 %a{href: '/admin_settings'} Admin Settings
               %li.font-m
-                %a{href: '/admin_settings'} Send Newsletter
+                %a{href: '/newsletter'} Send Newsletter
             %li.font-m
               - if user_signed_in?
                 = link_to 'Logout', destroy_user_session_path, :method => :delete, :calss => 'delete'

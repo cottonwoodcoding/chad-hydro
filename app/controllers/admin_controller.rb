@@ -19,6 +19,9 @@ class AdminController < ApplicationController
     redirect_to action: :settings
   end
 
+  def newsletter
+  end
+
   private
 
   def authenticate_admin!

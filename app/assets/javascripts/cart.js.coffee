@@ -8,7 +8,6 @@ $ ->
       type: 'POST'
       url: href
       success: (data) ->
-        console.log data
         window.location.reload()
       error: (data) ->
         responseText = data.responseText
