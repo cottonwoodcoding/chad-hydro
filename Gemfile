@@ -15,6 +15,7 @@ gem 'underscore-rails'
 gem 'gmaps4rails'
 gem 'tinymce-rails'
 gem 'geocoder'
+gem 'protected_attributes'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

@@ -11,12 +11,14 @@ ChadHydro::Application.routes.draw do
   get '/shop/category/:category_type', to: 'shop#sort_by_category'
   get '/shop/product/:product_id', to: 'shop#product'
   get '/shop/product/:product_id/reviews', to: 'shop#product_reviews'
+  get '/shop/search', to: 'shop#search_by_title'
   get '/cart', to: 'cart#index'
   get '/blog/new', to: 'blog#new'
   get '/blog/main_article', to: 'blog#main_article'
   get '/blog/update_comments'
   get '/blog/approve'
   get '/blog/edit', to: 'blog#edit'
+  get '/admin_settings', to: 'admin#settings'
 
   post '/blog/update', to: 'blog#update'
   post '/blog/create', to: 'blog#create'
@@ -28,4 +30,5 @@ ChadHydro::Application.routes.draw do
   post '/blog/delete_comment', to: 'blog#delete_comment'
   post '/blog/delete_article', to: 'blog#delete_article'
   post '/blog/reset_article_id', to: 'blog#reset_article_id'
+  post '/save_settings', to: 'admin#save_settings'
 end

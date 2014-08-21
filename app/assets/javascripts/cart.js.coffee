@@ -8,9 +8,14 @@ $ ->
       type: 'POST'
       url: href
       success: (data) ->
+        console.log data
         window.location.reload()
       error: (data) ->
-        window.location.reload()
+        responseText = data.responseText
+        if responseText == '/users/sign_in'
+          window.location.href = responseText
+        else
+          window.location.reload()
 
   $('.remove_from_cart').click (e) ->
     e.preventDefault()

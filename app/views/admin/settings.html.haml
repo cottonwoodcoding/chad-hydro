@@ -1,0 +1,12 @@
+%h2.text-center Admin Settings
+%hr
+%form.form-horizontal{:role => "form", method: 'post', action: '/save_settings'}
+  %input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token}/
+  - @settings.each do |setting|
+    .form-group
+      %label.col-sm-2.control-label{:for => ""}
+        = setting.name
+      .col-sm-10
+        %textarea{name: "setting-name[#{setting.name}]"}
+          = setting.value
+  %button.btn.btn-success{type: 'submit'} Save Settings

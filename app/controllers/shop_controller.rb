@@ -19,7 +19,19 @@ class ShopController < ApplicationController
   def sort_by_category
     @category = params[:category_type]
     @products = @category ==  'all' ?  @products : ShopifyAPI::Product.where(product_type: @category)
-    render('index')
+    render :index
+  end
+
+  def search_by_title
+    search_term = params[:search_term]
+    if search_term.blank?
+      @category = 'All'
+      @products = ShopifyAPI::Product.all
+    else
+      @products = ShopifyAPI::Product.where({title: "%#{search_term.titleize}%"})
+      @category = search_term
+    end
+    render :index
   end
 
   private

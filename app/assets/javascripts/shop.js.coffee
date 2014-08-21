@@ -1,5 +1,9 @@
 $ ->
 
+  search_term = location.search.split('=')
+  if search_term.length > 1
+    $('#search_term').val(search_term[1].replace('+', ' '))
+
   $("#list").click (event) ->
     event.preventDefault()
     $("#products .item").addClass "list-group-item"
@@ -30,4 +34,5 @@ $ ->
     $addToCartModal.modal('show')
     $addToCartModal.find('.modal-product-title').html($(e.target).attr('value'))
     $('#modal_add_to_cart').attr('href', $(e.target).attr('href'))
+
 

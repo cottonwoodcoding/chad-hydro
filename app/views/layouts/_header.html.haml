@@ -12,7 +12,7 @@
       #company-name.pull-left
         .nav-header.font-db Moonlight Garden Supply
         #company-phone.font-m
-          = number_to_phone("8008888888", area_code: true, country_code: 1, delimiter: "-")
+          = phone_number_formatted(Setting.setting_value('toll free number'))
         #social-media-links.pull-right
           = link_to 'http://www.facebook.com/moonlightgardensupply', {target: '_blank'} do
             = fa_icon "facebook-square 2x"
@@ -40,10 +40,15 @@
           %a.settings.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
             %b.fa.fa-gears
           %ul.dropdown-menu
-            %li.font-m
-              %a{href: '#'} Subscribe
+            - if admin?
+              %li.font-m
+                %a{href: '/admin_settings'} Admin Settings
+              %li.font-m
+                %a{href: '/admin_settings'} Send Newsletter
             %li.font-m
               - if user_signed_in?
                 = link_to 'Logout', destroy_user_session_path, :method => :delete, :calss => 'delete'
               - else
                 = link_to 'Sign In', new_user_session_path, :method => :get
+
+

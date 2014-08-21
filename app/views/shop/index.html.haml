@@ -16,6 +16,11 @@
             %a.font-l{href: "/shop/category/#{key}"}
               = key.pluralize
 .container-fluid
+  %form#search_products{method: 'get', action: '/shop/search'}
+    .input-group
+      %input.form-control#search_term{:placeholder => "Product Title", :type => "text", name: 'search_term'}
+        %span.input-group-btn
+          %button.btn.btn-search{:type => "submit"} Search
   #products.row.list-group
     = render(partial: 'products', locals: {products: @products})
 
