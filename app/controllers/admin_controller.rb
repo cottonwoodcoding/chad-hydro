@@ -22,6 +22,21 @@ class AdminController < ApplicationController
   def newsletter
   end
 
+  def send_newsletter
+    begin
+      profiles = Profile.where(newsletter: 1)
+      if profiles.blank?
+        flash[:alert] = "Nobody has subscribed to the newsletter."
+      else
+        NewsletterMailer.newsletter_email(profiles, params[:newsletter_content].html_safe).deliver
+        flash[:notice] = "Newsletter Sent Successfully"
+      end
+    rescue => e
+      flash[:alert] = 'There was an error sending the newsletter please try again'
+    end
+    redirect_to action: :newsletter
+  end
+
   private
 
   def authenticate_admin!

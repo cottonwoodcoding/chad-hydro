@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    binding.pry
     @profile = Profile.new
   end
 

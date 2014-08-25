@@ -152,6 +152,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sendgrid (1.2.0)
+      json
+      json
     shopify_api (3.2.1)
       activeresource (>= 3.0.0)
       thor (>= 0.14.4)
@@ -213,6 +216,7 @@ DEPENDENCIES
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.2)
   sdoc
+  sendgrid
   shopify_api
   sqlite3
   therubyracer

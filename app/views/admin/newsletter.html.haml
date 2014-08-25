@@ -1,2 +1,8 @@
 %h2.text-center Newsletter
 %hr
+%form.form#newsletter-form{action: '/send_newsletter', method: 'post'}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  = text_area_tag :content, "", :class => "tinymce", name: 'newsletter_content', :rows => 10, :cols => 30
+  = tinymce
+  %hr
+  %btn#send_newsletter_btn.btn.btn-success.pull-right{type: 'submit'} Send Newsletter

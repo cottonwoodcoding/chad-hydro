@@ -16,6 +16,7 @@ gem 'gmaps4rails'
 gem 'tinymce-rails'
 gem 'geocoder'
 gem 'protected_attributes'
+gem 'sendgrid'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

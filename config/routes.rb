@@ -32,4 +32,5 @@ ChadHydro::Application.routes.draw do
   post '/blog/delete_article', to: 'blog#delete_article'
   post '/blog/reset_article_id', to: 'blog#reset_article_id'
   post '/save_settings', to: 'admin#save_settings'
+  post '/send_newsletter', to: 'admin#send_newsletter'
 end
