@@ -1,0 +1,5 @@
+paypal_username: 'username'
+paypal_password: 'passowrd'
+paypal_signature: 'sig'
+paypal_success_redirect: 'http://localhost:2000/media/purchase_confirm'
+paypal_error_redirect: 'http://localhost:2000/media/purchase_error'

@@ -1,4 +1,5 @@
 ChadHydro::Application.routes.draw do
+  get "redirect/sign_in"
   resources :profiles
 
   devise_for :users, :controllers => { :registrations => "registrations" }
@@ -6,7 +7,7 @@ ChadHydro::Application.routes.draw do
 
   get '/about', to: 'about#index'
   get '/blog', to: 'blog#index'
-  get '/contact', to: 'contacts#index'
+  get '/contact', to: 'contact#index'
   get '/shop', to: 'shop#index'
   get '/shop/category/:category_type', to: 'shop#sort_by_category'
   get '/shop/product/:product_id', to: 'shop#product'
@@ -20,10 +21,13 @@ ChadHydro::Application.routes.draw do
   get '/blog/edit', to: 'blog#edit'
   get '/admin_settings', to: 'admin#settings'
   get '/newsletter', to: 'admin#newsletter'
+  get '/redirect/sign_in', to: 'redirect#sign_in'
+  get '/cart/purchase_confirm', to: 'cart#purchase_confirm'
+  get '/cart/purchase_error', to: 'cart#purchase_error'
 
   post '/blog/update', to: 'blog#update'
   post '/blog/create', to: 'blog#create'
-  post '/submit_request', to: 'contacts#submit_request'
+  post '/submit_request', to: 'contact#submit_request'
   post '/add_to_cart/:product_id/:quantity', to: 'cart#add_to_cart'
   post '/remove_from_cart/:product_id/:quantity', to: 'cart#remove_from_cart'
   post '/blog/new_comment', to: 'blog#new_comment'

@@ -1,0 +1,5 @@
+paypal_username: 'billing-facilitator_api1.moonlightgardensupply.com'
+paypal_password: '1411598770'
+paypal_signature: 'AkzTrMdAWORqz6-BgUG4MWDWvPNLAuL-M7L3.VLaCtDIfMHef7AvHLPZ'
+paypal_success_redirect: 'http://localhost:2000/cart/purchase_confirm'
+paypal_error_redirect: 'http://localhost:2000/cart/purchase_error'

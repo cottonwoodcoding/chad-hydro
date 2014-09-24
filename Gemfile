@@ -8,6 +8,8 @@ gem 'haml-rails'
 gem 'autoprefixer-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'shopify_api'
+gem 'kaminari'
+gem 'shopify-kaminari'
 gem "font-awesome-rails"
 gem 'rmagick'
 gem 'devise'
@@ -17,6 +19,7 @@ gem 'tinymce-rails'
 gem 'geocoder'
 gem 'protected_attributes'
 gem 'sendgrid'
+gem 'paypal-express'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'
@@ -41,6 +44,7 @@ group :production do
 end
 
 group :development, :test do
+   gem 'thin'
    gem 'rspec-rails', '~> 3.0.0'
    gem 'debugger'
    gem 'pry'

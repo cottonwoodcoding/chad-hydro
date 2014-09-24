@@ -11,10 +11,10 @@
       .panel-body
         .category
           %a.font-l{href: '/shop/category/all'} All
-        - @categories.each do |key, value|
+        - @categories.each do |category_info|
           .category
-            %a.font-l{href: "/shop/category/#{key}"}
-              = key.pluralize
+            %a.font-l{href: "/shop/category/#{category_info.category}"}
+              = category_info.category.pluralize
 .container-fluid
   %form#search_products{method: 'get', action: '/shop/search'}
     .input-group
@@ -23,4 +23,6 @@
           %button.btn.btn-search{:type => "submit"} Search
   #products.row.list-group
     = render(partial: 'products', locals: {products: @products})
+  .text-center
+    = paginate @products
 

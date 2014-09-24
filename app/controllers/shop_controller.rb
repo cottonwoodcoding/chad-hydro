@@ -1,7 +1,6 @@
 class ShopController < ApplicationController
   respond_to :html
   before_filter :all_products_and_categories
-  before_filter :create_thumbnails, only: [:index]
 
   def index
     @category = 'All'
@@ -18,7 +17,7 @@ class ShopController < ApplicationController
 
   def sort_by_category
     @category = params[:category_type]
-    @products = @category ==  'all' ?  @products : ShopifyAPI::Product.where(product_type: @category)
+    @products = @category ==  'all' ?  @products : ShopifyAPI::Product.paginate(per: 150, page: params[:page] || 1, params: {product_type: @category})
     render :index
   end
 
@@ -26,9 +25,9 @@ class ShopController < ApplicationController
     search_term = params[:search_term]
     if search_term.blank?
       @category = 'All'
-      @products = ShopifyAPI::Product.all
+      @products = ShopifyAPI::Product.paginate(per: 150, page: params[:page] || 1)
     else
-      @products = ShopifyAPI::Product.where({title: "%#{search_term.titleize}%"})
+      @products = ShopifyAPI::Product.paginate(per: 150, page: params[:page] || 1, params: {title: "%#{search_term.titleize}%"})
       @category = search_term
     end
     render :index
@@ -37,18 +36,8 @@ class ShopController < ApplicationController
   private
 
   def all_products_and_categories
-    @products = ShopifyAPI::Product.all
-    @categories = Hash.new{|hash, key| hash[key] = Array.new}
-    @products.map{ |product| @categories[product.product_type] << product }
-  end
-
-  def create_thumbnails
-    @products.each do |product|
-      path = "#{Rails.root}/app/assets/images/#{product.id}-thumb.jpg"
-      next if File.exists?(path)
-      image = Magick::Image.read(product.images.first.src)
-      image.first.thumbnail(200, 200).write(path)
-    end
+    @products = ShopifyAPI::Product.paginate per: 150, page: params[:page] || 1
+    @categories = ProductCategory.all
   end
 
 end

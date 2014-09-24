@@ -1,8 +1,9 @@
 - products.each do |product|
   .item.col-md-3
     .thumbnail
-      %a{href: product_url(product.id)}
-        %img.group.list-group-image{:alt => "", :src => image_thumb(product.id)}
+      .product-thumb
+        %a{href: product_url(product.id)}
+          %img.group.list-group-image{:alt => "", :src => (product.images.first.src rescue image_path('no-product-image.png'))}
       .caption
         .product-title
           %a.group.inner.list-group-item-heading{href: product_url(product.id)}

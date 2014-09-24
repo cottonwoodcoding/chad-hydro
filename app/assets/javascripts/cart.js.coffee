@@ -11,10 +11,10 @@ $ ->
         window.location.reload()
       error: (data) ->
         responseText = data.responseText
-        if responseText == '/users/sign_in'
-          window.location.href = responseText
+        if responseText.trim() == 'You need to sign in or sign up before continuing.'
+          window.location.href = '/users/sign_in'
         else
-          window.location.reload()
+          alert('Something went wrong while trying to add your item. Please try again.')
 
   $('.remove_from_cart').click (e) ->
     e.preventDefault()

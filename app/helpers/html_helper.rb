@@ -5,7 +5,9 @@ module HtmlHelper
   end
 
   def image_thumb(product_id)
-    image_path("#{product_id}-thumb.jpg")
+    if File.exists?("#{Rails.root}/app/assets/images/#{product_id}-thumb.jpg")
+      image_path("#{product_id}-thumb.jpg")
+    end
   end
 
   def phone_number_formatted(number)

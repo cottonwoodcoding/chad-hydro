@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822224639) do
+ActiveRecord::Schema.define(version: 20140924012603) do
+
+  create_table "product_categories", force: true do |t|
+    t.text     "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "profiles", force: true do |t|
     t.integer  "customer_id"
