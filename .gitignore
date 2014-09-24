@@ -16,3 +16,4 @@
 /tmp
 /config/shopify_config.yml
 /config/email.yml
+/config/paypal.yml
