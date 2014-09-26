@@ -1,19 +1,41 @@
-= form_for @profile do |f|
+.text-center.text-danger
+  %i.font-db * this info will be used for shipping purposes
+= form_for(@profile, html: { class: 'form-horizontal' }) do |f|
   - if @profile.errors.any?
     #error_explanation
       %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
       %ul
         - @profile.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :customer_id
-    = f.number_field :customer_id
-  .field
-    = f.label :address
-    = f.text_area :address
-  .field
-    = f.label :order_ids
-    = f.text_area :order_ids
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :street_address, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :street_address, {required: true, autofocus: true, class: 'form-control'}
+  .form-group
+    = f.label :city, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :city, {required: true, class: 'form-control'}
+  .form-group
+    = f.label :state, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.select :state, region_options_for_select(Carmen::Country.named('United States').subregions, 'US', priority: ['US']), {class: 'form-control'}
+  .form-group
+    = f.label :zip, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :zip, {required: true, class: 'form-control'}
+  .form-group
+    = f.label :preferred_phone, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :preferred_phone, {class: 'form-control'}
+  .form-group
+    = f.label :company, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :company, {class: 'form-control'}
+  .form-group
+    = f.label :newsletter, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.check_box :newsletter, {class: 'form-control'}
+  .clearfix
+  %hr
+  .actions.text-center
+    = f.submit "Submit", {class: 'btn btn-sm btn-success'}

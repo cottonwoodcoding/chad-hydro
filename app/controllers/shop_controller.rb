@@ -12,12 +12,11 @@ class ShopController < ApplicationController
 
   def product_reviews
     @product = ShopifyAPI::Product.find(params[:product_id])
-    #TODO: figure out how to get reviews maybe roll our own?
   end
 
   def sort_by_category
     @category = params[:category_type]
-    @products = @category ==  'all' ?  @products : ShopifyAPI::Product.paginate(per: 150, page: params[:page] || 1, params: {product_type: @category})
+    @products = @category ==  'all' ?  @products : ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {product_type: @category})
     render :index
   end
 
@@ -25,9 +24,8 @@ class ShopController < ApplicationController
     search_term = params[:search_term]
     if search_term.blank?
       @category = 'All'
-      @products = ShopifyAPI::Product.paginate(per: 150, page: params[:page] || 1)
     else
-      @products = ShopifyAPI::Product.paginate(per: 150, page: params[:page] || 1, params: {title: "%#{search_term.titleize}%"})
+      @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {title: "%#{search_term.titleize}%"})
       @category = search_term
     end
     render :index
@@ -36,8 +34,8 @@ class ShopController < ApplicationController
   private
 
   def all_products_and_categories
-    @products = ShopifyAPI::Product.paginate per: 150, page: params[:page] || 1
-    @categories = ProductCategory.all
+    @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page])
+    @categories = ProductCategory.all.sort_by { |c| c.category }
   end
 
 end

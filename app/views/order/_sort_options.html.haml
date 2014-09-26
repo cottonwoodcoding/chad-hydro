@@ -1,0 +1,21 @@
+#accordion.panel-group.font-db.text-center
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#order-collapse"}
+          Order Filters
+    #order-collapse.panel-collapse.collapse.in
+      .panel-body
+        %a{href: '/order/index'} No Filter
+        %br
+        %a{href: '/order/index?sort=shipped'} Show Shipped
+        %br
+        %a{href: '/order/index?sort=not shipped'} Show Not Shipped
+        %br
+        %a{href: '/order/index?sort=price'} Sort By Total Price
+        %br
+        %a{href: '/order/index?sort=item count'} Sort By Items Ordered
+        %br
+        %a{href: '/order/index?sort=date newest'} Sort By Newest Orders
+        %br
+        %a{href: '/order/index?sort=date oldest'} Sort By Oldest Orders

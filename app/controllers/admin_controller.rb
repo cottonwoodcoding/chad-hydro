@@ -5,14 +5,27 @@ class AdminController < ApplicationController
 
   def settings
     @settings = Setting.all
+    @days = %w(monday tuesday wednesday thursday friday saturday sunday)
+    @media = %w(facebook instagram twitter youtube)
   end
 
   def save_settings
     begin
-    params['setting-name'].each do |key, value|
-      Setting.find_by_name(key).update_attributes!(value: value)
-    end
-    flash[:notice] = "Settings updated successfully."
+      params['setting-name'].each do |key, value|
+        setting = Setting.find_or_initialize_by(name: key)
+        setting.update_attributes!(value: value)
+      end
+      params['hours-setting'].each do |key, value|
+        value = 'closed' if value.blank?
+        setting = Setting.find_or_initialize_by(name: key)
+        setting.update_attributes!(value: value)
+      end
+      params['social-setting'].each do |key, value|
+        value = 'none' if value.blank?
+        setting = Setting.find_or_initialize_by(name: key)
+        setting.update_attributes!(value: value)
+      end
+      flash[:notice] = "Settings updated successfully."
     rescue => e
        flash[:alert] = "Settings were not updated. Please make sure everything is filled out and try again."
     end

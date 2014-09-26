@@ -20,13 +20,16 @@ ActiveRecord::Schema.define(version: 20140924012603) do
   end
 
   create_table "profiles", force: true do |t|
-    t.integer  "customer_id"
-    t.text     "address"
-    t.text     "order_ids"
+    t.integer  "user_id"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "preferred_phone"
+    t.string   "company"
+    t.integer  "newsletter",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "newsletter",  default: 0
   end
 
   create_table "settings", force: true do |t|
@@ -47,12 +50,12 @@ ActiveRecord::Schema.define(version: 20140924012603) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "role"
+    t.string   "shopify_customer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "role"
-    t.string   "last_name"
-    t.integer  "profile_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

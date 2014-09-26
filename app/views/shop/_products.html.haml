@@ -2,12 +2,19 @@
   .item.col-md-3
     .thumbnail
       .product-thumb
-        %a{href: product_url(product.id)}
-          %img.group.list-group-image{:alt => "", :src => (product.images.first.src rescue image_path('no-product-image.png'))}
+        - if defined?(review)
+          %a{href: ''}
+            %img.group.list-group-image{:alt => "", :src => (product.images.first.src rescue image_path('no-product-image.png'))}
+        - else
+          %a{href: product_url(product.id)}
+            %img.group.list-group-image{:alt => "", :src => (product.images.first.src rescue image_path('no-product-image.png'))}
       .caption
         .product-title
-          %a.group.inner.list-group-item-heading{href: product_url(product.id)}
+          - if defined?(review)
             = product.title
+          - else
+            %a.group.inner.list-group-item-heading{href: product_url(product.id)}
+              = product.title
         .body-container
           %p.group.inner.list-group-item-text.font-n
             = strip_tags product.body_html
@@ -23,9 +30,12 @@
                 Quantity:
                 = session['cart'][product.id]
           .col-xs-12.col-md-12
-            %a.font-l.btn.btn-success.btn-sm.pull-right{:href => product_url(product.id)} More Details
+            - unless defined?(review)
+              %a.font-l.btn.btn-success.btn-sm.pull-right{:href => product_url(product.id)} More Details
             - if defined?(cart)
-              %a.font-l.remove_from_cart.btn.btn-warning.btn-sm.pull-right.button-margin{:href => "/remove_from_cart/#{product.id}/1", :value => product.id} Remove
+              - unless defined?(review)
+                %a.font-l.remove_from_cart.btn.btn-warning.btn-sm.pull-right.button-margin{:href => "/remove_from_cart/#{product.id}/1", :value => product.id} Remove
             - else
-              %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right.button-margin{:href => "/add_to_cart/#{product.id}/1", :value => product.title} Add To Cart
+              - unless defined?(review)
+                %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right.button-margin{:href => "/add_to_cart/#{product.id}/1", :value => product.title} Add To Cart
 

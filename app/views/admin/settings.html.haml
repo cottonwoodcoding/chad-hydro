@@ -1,12 +1,43 @@
-%h2.text-center Admin Settings
+%h2.text-center.font-db Admin Settings
 %hr
-%form.form-horizontal{:role => "form", method: 'post', action: '/save_settings'}
-  %input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token}/
-  - @settings.each do |setting|
-    .form-group
-      %label.col-sm-2.control-label{:for => ""}
-        = setting.name
-      .col-sm-10
-        %textarea{name: "setting-name[#{setting.name}]"}
-          = setting.value
-  %button.btn.btn-success{type: 'submit'} Save Settings
+%h4.text-center.underline.font-db General Settings
+#site_settings
+  %form.form-horizontal{:role => "form", method: 'post', action: '/save_settings'}
+    %input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token}/
+    - @settings.each do |setting|
+      .form-group.font-db
+        %label.col-sm-2.control-label
+          = setting.name
+        - if setting.name == 'about us'
+          .col-sm-10
+            %textarea#about_us_setting.form-control{name: "setting-name[#{setting.name}]"}
+              = setting.value
+        -else
+          .col-sm-10
+            %input.form-control{type: 'phone', value: setting.value, name: "setting-name[#{setting.name}]"}
+        - break if setting.name == 'state'
+    .clearfix
+    %hr
+    %h4.text-center.underline Social Media Links
+    - @media.each do |media|
+      .form-group.font-db
+        %label.col-sm-2.control-label
+          = "#{media} URL"
+        .col-sm-10
+          %input.form-control{type: 'url', name: "social-setting[#{media}-social]", value: Setting.setting_value("#{media}-social")}
+    .clearfix
+    %hr
+    %h4.text-center.underline Business Hours
+    - @days.each do |day|
+      .form-group.font-db
+        %label.col-sm-2.control-label
+          = day
+        .col-sm-10
+          %input.form-control.picker.time.ui-timepicker-input{:autocomplete => "off", :type => "text", name: "hours-setting[#{day}-start]", value: Setting.setting_value("#{day}-start")}
+          .text-center
+            TO
+          %input.form-control.picker.time.ui-timepicker-input{:autocomplete => "off", :type => "text", name: "hours-setting[#{day}-end]", value: Setting.setting_value("#{day}-start")}
+    .clearfix
+    %hr
+    .actions.text-center
+      %button.btn.btn-success#save_settings{type: 'submit'} Save Settings

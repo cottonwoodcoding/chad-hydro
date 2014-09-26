@@ -20,6 +20,10 @@ gem 'geocoder'
 gem 'protected_attributes'
 gem 'sendgrid'
 gem 'paypal-express'
+gem 'curb'
+gem 'carmen-rails', '~> 1.0.0'
+gem 'biggs'
+gem 'alchemist'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

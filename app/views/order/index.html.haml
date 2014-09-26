@@ -1,0 +1,66 @@
+%h2.text-center.font-db
+  Orders For
+  = "#{current_user.first_name} #{current_user.last_name}"
+%hr
+- if @orders.count == 0 && !@param
+  .well.text-center.font-db
+    %h4
+      No orders found.
+      %br
+      %a{href: '/shop'} Go Shopping!
+- elsif @orders.count == 0 && @param
+  = render(partial: 'sort_options')
+  .well.text-center.font-db
+    %h4
+      = "No orders found with order filter: #{@param}"
+- else
+  = render(partial: 'sort_options')
+  - if @param
+    %h4.text-center.underline.font-db
+      = "orders sorted by: #{@param}"
+    .text-center
+      %a.font-db{href: '/order/index'} Clear Filter
+  - @orders.each do |order|
+    - shipped = order.fulfillment_status == 'fulfilled' ? true : false
+    .well.text-center.font-db
+      %h4.underline Order Info
+      %p
+        Order Number:
+        = order.id
+      %p
+        Date Ordered:
+        = localize(Date.parse(order.created_at), :format => :long)
+      %p
+        Number of Prodcuts Ordered:
+        = order.line_items.count
+      %p.underline
+        Prodcuts Ordered:
+        %br
+        %ul
+        - order.line_items.each do |line_item|
+          %li
+            = line_item.title
+            \-
+            quantity:
+            = line_item.quantity
+      %p
+        Payment Status:
+        = order.financial_status
+      %p
+        Shipped?:
+        = shipped
+      - if shipped
+        %p
+          Tracking Numbers:
+          %br
+          - tracking_numbers = order.fulfillments.map { |fulfillment| fulfillment.tracking_number }
+          %ul
+          - tracking_numbers.each do |tn|
+            %li
+              %a{href: "http://www.packagetrackr.com/track/#{tn}", target: "_blank"}
+                = tn
+      %hr
+      %p.text-success
+        Order Total:
+        = number_to_currency(order.total_price_usd)
+  = paginate @orders

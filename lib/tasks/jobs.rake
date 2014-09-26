@@ -1,15 +1,68 @@
 namespace :jobs do
   desc "Run this to generate all product categories"
   task generate_categories: :environment do
-    1..300.times do |num|
+    num = 1
+    while true
       num = num + 1
+      products = ShopifyAPI::Product.paginate(per: 150, page: num)
+      break if products.count == 0
+      products.each { |product| ProductCategory.find_or_create_by(category: product.product_type) }
+    end
+  end
+
+  desc "Run this to delete all shopify products"
+  task delete_shopify_products: :environment do
+    num = 0
+    while true
+      num = num + 1
+      products = ShopifyAPI::Product.paginate(per: 150, page: num)
+      break if products.count == 0
+      products.each do |product|
+        sleep 1
+        product.destroy
+        puts "#{product.title} deleted"
+      end
+    end
+  end
+
+  desc "Run this to generate all setup data"
+  task setup: :environment do
+    # Generate Shop Categories
+    Rake::Task['jobs:generate_categories'].execute
+    # Default Settings
+    ['about us', 'toll free number', 'local number', 'street address', 'city', 'zip', 'state', 'monday-start', 'monday-end', 'tuesday-start', 'tuesday-end', 'wednesday-start', 'wednesday-end', 'thursday-start', 'thursday-end', 'friday-start', 'friday-end', 'saturday-start', 'saturday-end', 'sunday-start', 'sunday-end', 'facebook-social', 'instagram-social', 'twitter-social', 'youtube-social'].each do |setting|
       begin
-        products = ShopifyAPI::Product.paginate(per: 150, page: num)
-        raise 'no more products' if products.count == 0
-        products.each { |product| ProductCategory.find_or_create_by(category: product.product_type) }
-      rescue => e
-        puts "Error - #{e}"
-        break
+        case setting
+          when 'about us'
+            Setting.create!(name: setting, value: "Moonlight Garden Supply is Utah's premier Organic & Hydroponic garden supply store. We are committed to providing the best products and knowledge the Organic & Hydroponic industry has to offer. From beginner to expert we have everything you need to keep your indoor garden thriving. We believe everyone should have access to clean healthy produce year round regardless of your climate. Our expert staff can take the hassle out of designing your indoor garden space to ensure maximum yields. We have licensed, insured Contractors in-house that can build your grow space out start to finish. Making make your path to healthy sustainable produce as painless as possible. Moonlight Garden Supply ships discreetly within the US and Canada.")
+          when 'toll free number'
+            Setting.create!(name: setting, value: '800-888-8888')
+          when 'local number'
+            Setting.create!(name: setting, value: '801-793-9587')
+          when 'street address'
+            Setting.create!(name: setting, value: '1530 S. State Street')
+          when 'city'
+            Setting.create!(name: setting, value: 'Salt Lake City')
+          when 'zip'
+            Setting.create!(name: setting, value: '84115')
+          when 'state'
+            Setting.create!(name: setting, value: 'UT')
+          when 'monday-start', 'tuesday-start', 'wednesday-start', 'thursday-start', 'friday-start', 'saturday-start'
+            Setting.create!(name: setting, value: '10:00am')
+          when 'monday-end', 'tuesday-end', 'wednesday-end', 'thursday-end', 'friday-end', 'saturday-end'
+            Setting.create!(name: setting, value: '7:00pm')
+          when 'sunday-start', 'sunday-end'
+            Setting.create!(name: setting, value: 'closed')
+          when 'facebook-social'
+            Setting.create!(name: setting, value: 'http://www.facebook.com/moonlightgardensupply')
+          when 'instagram-social'
+            Setting.create!(name: setting, value: 'none')
+          when 'twitter-social'
+            Setting.create!(name: setting, value: 'http://twitter.com/mgardensupply')
+          when 'youtube-social'
+            Setting.create!(name: setting, value: 'none')
+        end
+      rescue
         next
       end
     end

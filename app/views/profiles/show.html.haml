@@ -1,15 +1,43 @@
-%p#notice= notice
-
-%p
-  %b Customer:
-  = @profile.customer_id
-%p
-  %b Address:
-  = @profile.address
-%p
-  %b Order ids:
-  = @profile.order_ids
-
-= link_to 'Edit', edit_profile_path(@profile)
-\|
-= link_to 'Back', profiles_path
+%h2.font-db.text-center
+  Profile Info For
+  = "#{current_user.first_name} #{current_user.last_name}"
+.text-center.text-danger
+  %i.font-db * this info will be used for shipping purposes
+.well.text-center.font-db
+  %h4.underline Email
+  %label
+    = current_user.email
+  %hr
+  %h4.underline Address
+  %label
+    Street Address:
+    = @profile.street_address
+  %br
+  %label
+    City:
+    = @profile.city
+  %br
+  %label
+    State:
+    = @profile.state
+  %br
+  %label
+    Zip Code:
+    = @profile.zip
+  %hr
+  %h4.underline Phone Number
+  %label
+    Preferred Phone:
+    = @profile.preferred_phone
+  %hr
+  %h4.underline Additional Info
+  %label
+    Company:
+    = @profile.company
+  %br
+  %label
+    Receives Newsletters?:
+    = @profile.newsletter == 1
+#profile-actions.text-center
+  = link_to('Edit Profile', edit_profile_path(@profile), {class: 'btn btn-success'})
+  = link_to('View Orders', "/users/#{current_user.id}/orders", {class: 'btn btn-success'})

@@ -1,4 +1,5 @@
 ChadHydro::Application.routes.draw do
+  get "order/index"
   get "redirect/sign_in"
   resources :profiles
 
@@ -24,6 +25,7 @@ ChadHydro::Application.routes.draw do
   get '/redirect/sign_in', to: 'redirect#sign_in'
   get '/cart/purchase_confirm', to: 'cart#purchase_confirm'
   get '/cart/purchase_error', to: 'cart#purchase_error'
+  get '/users/:id/orders', to: 'order#index'
 
   post '/blog/update', to: 'blog#update'
   post '/blog/create', to: 'blog#create'
@@ -37,4 +39,6 @@ ChadHydro::Application.routes.draw do
   post '/blog/reset_article_id', to: 'blog#reset_article_id'
   post '/save_settings', to: 'admin#save_settings'
   post '/send_newsletter', to: 'admin#send_newsletter'
+  post '/cart/user_check'
+  post '/cart/submit_purchase', to: 'cart#submit_purchase'
 end

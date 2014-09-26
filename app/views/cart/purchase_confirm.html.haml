@@ -1,0 +1,14 @@
+%h1.text-center.font-db Confirm Your Purchase
+%hr
+#cart-header.text-center
+  %h3.font-n
+    Order Total:
+    %span.text-success.font-n
+      = number_to_currency(@total)
+  %form#review_form{method: 'POST', action: '/cart/submit_purchase'}
+    = hidden_field_tag :paypal_token, @token
+    = hidden_field_tag :paypal_payer_id, @payer_id
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+    %button#submit_purchase.btn.btn-danger.font-l{type: 'submit'} Confirm Purchase
+%hr
+= render(partial: 'shop/products', locals: {products: @products, review: true})

@@ -18,11 +18,11 @@
               .font-m Our Location
           .panel-body
             %address
-              %strong.font-m Moonlight Garden Supply
+              %strong.font-m.underline Moonlight Garden Supply
               %br
                 Address:
                 .font-n
-                  = Setting.setting_value('address')
+                  = @address
                 %br
                   %i.icon-phone-sign
                   Toll Free Number:
@@ -45,27 +45,22 @@
                   %th.font-n Day
                   %th.font-n Time
               %tbody
-                %tr.success
-                  %td.font-l Monday
-                  %td.font-l 8:00 to 6:00
-                %tr.success
-                  %td.font-l Tuesday
-                  %td.font-l 8:00 to 6:00
-                %tr.success
-                  %td.font-l Wednesday
-                  %td.font-l 8:00 to 6:00
-                %tr.success
-                  %td.font-l Thursday
-                  %td.font-l 8:00 to 6:00
-                %tr.success
-                  %td.font-l Friday
-                  %td.font-l 8:00 to 6:00
-                %tr.success
-                  %td.font-l Saturday
-                  %td.font-l 9:00 to 9:00
-                %tr.danger
-                  %td.font-l Sunday
-                  %td.font-l Closed
+                - @days.each do |day|
+                  - start_value = Setting.setting_value("#{day}-start")
+                  - end_value = Setting.setting_value("#{day}-end")
+                  - if start_value == 'closed'
+                    %tr.danger
+                      %td.font-l
+                        = day.capitalize
+                      %td.font-l Closed
+                  - else
+                    %tr.success
+                      %td.font-l
+                        = day.capitalize
+                      %td.font-l
+                        = start_value
+                        to
+                        = end_value
       .col-12.col-lg-8
         .panel
           .panel-heading

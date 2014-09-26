@@ -4,6 +4,6 @@ class Setting < ActiveRecord::Base
   validates :name, uniqueness: true
 
   def self.setting_value(setting_name)
-    self.find_by_name(setting_name).value
+    self.find_by_name(setting_name).value rescue ""
   end
 end

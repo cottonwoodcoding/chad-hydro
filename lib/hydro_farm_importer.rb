@@ -1,6 +1,10 @@
 require 'pry'
 require 'json'
 require 'shopify_api'
+require 'alchemist'
+
+# Load Conversion Lib
+Alchemist.setup
 
 # Setup Shopify API Access
 shopify_username = ARGV[0]
@@ -17,7 +21,7 @@ hydro_farm_data.each do |item|
   title = item['DESCRIPTION']
   shopify_product.title = title
   shopify_product.handle = title
-  shopify_product.body_html = title
+  shopify_product.body_html = item['WEBDESCRIPTION']
   shopify_product.product_type = item['CATEGORY']
   shopify_product.vendor = item['BRAND']
 
@@ -29,11 +33,13 @@ hydro_farm_data.each do |item|
 
   product_variant = ShopifyAPI::Variant.new
   product_variant.barcode = item['EACH_BARCODE']
-  product_variant.grams = item['EACH_WEIGHT'].to_f
+  product_variant.sku = item['EACH_BARCODE']
+  product_variant.grams = item['EACH_WEIGHT'].to_f.pounds.to.grams.value
   product_variant.price = item['SRP'].to_f
   product_variant.product_id = shopify_product.id
   product_variant.requires_shipping = true
   product_variant.taxable = true
+  product_variant.meta_field = {key: 'WARRANTY', value: item['WARRANTY'], value_type: 'string', namespace: 'product-warranties'}
   product_variant.image_id = product_image.id
   product_variant.inventory_policy = 'continue'
   shopify_product.variants = [product_variant]

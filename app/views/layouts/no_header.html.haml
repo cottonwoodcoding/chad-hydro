@@ -11,14 +11,7 @@
     %script{:src => "//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js", :type => "text/javascript"}
     = csrf_meta_tags
   %body
-    %div#header
+    %header
       = render :partial => "shared/bflash"
-      %header#main_header
-        = render :partial => "layouts/header"
-    #main-content.container-fluid
+    .container-fluid
       = yield
-    %footer#footer.text-center.font-m
-      Built With
-      = fa_icon "heart"
-      By:
-      %a{href: 'http://www.cottonwoodcoding.com', target: '_blank'} Cottonwood Coding

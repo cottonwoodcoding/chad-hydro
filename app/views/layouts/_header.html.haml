@@ -14,14 +14,10 @@
         #company-phone.font-m
           = phone_number_formatted(Setting.setting_value('toll free number'))
         #social-media-links.pull-right
-          = link_to 'http://www.facebook.com/moonlightgardensupply', {target: '_blank'} do
-            = fa_icon "facebook-square 2x"
-          = link_to 'http://www.instagram.com', {target: '_blank'} do
-            = fa_icon "instagram 2x"
-          = link_to 'http://twitter.com/mgardensupply', {target: '_blank'} do
-            = fa_icon "twitter-square 2x"
-          = link_to 'http://www.youtube.com', {target: '_blank'} do
-            = fa_icon "youtube-square 2x"
+          - @social_media_settings.each do |media|
+            - unless media.value == 'none'
+              = link_to media.value, {target: '_blank'} do
+                = fa_icon "#{media.name.split('-').first}-square 2x"
     .collapse.navbar-collapse#nav-items.custom-nav.navbar-right
       %ul.nav.navbar-nav
         %li
@@ -40,15 +36,22 @@
           %a.settings.dropdown-toggle{'data-toggle' => 'dropdown', href: '#'}
             %b.fa.fa-gears
           %ul.dropdown-menu
-            - if admin?
+            - if user_signed_in?
+              %li.font-db.underline#user_name
+                = "Hello #{current_user.first_name}"
+              - if admin?
+                %li.font-m
+                  %a{href: '/admin_settings'} Admin Settings
+                %li.font-m
+                  %a{href: '/newsletter'} Send Newsletter
               %li.font-m
-                %a{href: '/admin_settings'} Admin Settings
+                = link_to 'Profile', "/profiles/#{current_user.id}"
+                = link_to 'Orders', "/users/#{current_user.id}/orders"
+                = link_to destroy_user_session_path, {:method => :delete} do
+                  Logout
+                  = fa_icon "sign-out"
+            - else
               %li.font-m
-                %a{href: '/newsletter'} Send Newsletter
-            %li.font-m
-              - if user_signed_in?
-                = link_to 'Logout', destroy_user_session_path, :method => :delete, :calss => 'delete'
-              - else
                 = link_to 'Sign In', new_user_session_path, :method => :get
 
 

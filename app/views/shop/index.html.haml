@@ -8,7 +8,7 @@
         %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
           Categories
     #collapseOne.panel-collapse.collapse.in
-      .panel-body
+      .panel-body#categories
         .category
           %a.font-l{href: '/shop/category/all'} All
         - @categories.each do |category_info|
@@ -18,9 +18,9 @@
 .container-fluid
   %form#search_products{method: 'get', action: '/shop/search'}
     .input-group
-      %input.form-control#search_term{:placeholder => "Product Title", :type => "text", name: 'search_term'}
+      %input.form-control#search_term{:placeholder => "Search Products By Title", :type => "text", name: 'search_term'}
         %span.input-group-btn
-          %button.btn.btn-search{:type => "submit"} Search
+          %button.btn.btn-success{:type => "submit"} Search
   #products.row.list-group
     = render(partial: 'products', locals: {products: @products})
   .text-center

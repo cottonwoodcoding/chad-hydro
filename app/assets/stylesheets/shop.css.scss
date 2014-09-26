@@ -2,6 +2,11 @@
   margin: 10px 50px 30px 50px;
 }
 
+#categories {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
 .glyphicon { margin-right:5px; }
 .thumbnail
 {

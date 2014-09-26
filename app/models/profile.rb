@@ -1,7 +1,5 @@
 class Profile < ActiveRecord::Base
-  serialize :address
-  serialize :order_ids
-  validates :address, presence: true
-  validates :newsletter, inclusion: { in: [0, 1]}
+  attr_accessible :street_address, :city, :state, :zip, :preferred_phone, :company
+  validates :street_address, :city, :state, :zip, presence: true
   belongs_to :user
 end
