@@ -55,8 +55,8 @@ class AdminController < ApplicationController
   def change_user_role
     user_id = params[:id].to_i
     user = User.find(user_id)
-    if current_user.id == user_id && user.role == 'admin'
-      render text: 'You cannot demote yourself from admin.', status: 400 and return
+    if (current_user.id == user_id && user.role == 'admin') || current_user.role == 'super admin'
+      render text: 'You cannot demote yourself or a super admin from admin.', status: 400 and return
     else
       user.role == 'admin' ? user.role = nil : user.role = 'admin'
       user.save
