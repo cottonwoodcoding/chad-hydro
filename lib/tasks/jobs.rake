@@ -52,9 +52,11 @@ namespace :jobs do
     Rake::Task['jobs:generate_categories'].execute
     Rake::Task['jobs:sub_categories'].execute
     # Default Settings
-    ['about us', 'toll free number', 'local number', 'street address', 'city', 'zip', 'state', 'monday-start', 'monday-end', 'tuesday-start', 'tuesday-end', 'wednesday-start', 'wednesday-end', 'thursday-start', 'thursday-end', 'friday-start', 'friday-end', 'saturday-start', 'saturday-end', 'sunday-start', 'sunday-end', 'facebook-social', 'instagram-social', 'twitter-social', 'youtube-social'].each do |setting|
+    ['checkout enabled', 'about us', 'toll free number', 'local number', 'street address', 'city', 'zip', 'state', 'monday-start', 'monday-end', 'tuesday-start', 'tuesday-end', 'wednesday-start', 'wednesday-end', 'thursday-start', 'thursday-end', 'friday-start', 'friday-end', 'saturday-start', 'saturday-end', 'sunday-start', 'sunday-end', 'facebook-social', 'instagram-social', 'twitter-social', 'youtube-social'].each do |setting|
       begin
         case setting
+          when 'checkout enabled'
+            Setting.create!(name: setting, value: 'false')
           when 'about us'
             Setting.create!(name: setting, value: "Moonlight Garden Supply is Utah's premier Organic & Hydroponic garden supply store. We are committed to providing the best products and knowledge the Organic & Hydroponic industry has to offer. From beginner to expert we have everything you need to keep your indoor garden thriving. We believe everyone should have access to clean healthy produce year round regardless of your climate. Our expert staff can take the hassle out of designing your indoor garden space to ensure maximum yields. We have licensed, insured Contractors in-house that can build your grow space out start to finish. Making make your path to healthy sustainable produce as painless as possible. Moonlight Garden Supply ships discreetly within the US and Canada.")
           when 'toll free number'
