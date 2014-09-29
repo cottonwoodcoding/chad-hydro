@@ -9,7 +9,7 @@
       Shopping Cart - Total:
       %span#cart_total.text-success.font-n
         = number_to_currency(@total)
-    -if !!Setting.setting_value('checkout') == true
+    -if Setting.setting_value('checkout') == 'true'
       %a.checkout{href: "http://moonlight-garden-supply.myshopify.com/cart/#{perma_link_append}", role: 'button', class: 'btn btn-primary font-l', target: '_blank'} Checkout
     - else
       %i The admin has disabled checkouts.
