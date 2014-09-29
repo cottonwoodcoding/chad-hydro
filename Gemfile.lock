@@ -56,6 +56,7 @@ GEM
     columnize (0.8.9)
     curb (0.8.6)
     daemons (1.1.9)
+    dalli (2.7.2)
     debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -83,6 +84,8 @@ GEM
       activesupport (>= 4.0.1)
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
+    heroku-deflater (0.5.3)
+      rack (>= 1.4.5)
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -100,6 +103,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
@@ -119,6 +123,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.4)
@@ -236,19 +242,24 @@ DEPENDENCIES
   carmen-rails (~> 1.0.0)
   coffee-rails (~> 4.0.0)
   curb
+  dalli
   debugger
   devise
   font-awesome-rails
   geocoder
   gmaps4rails
   haml-rails
+  heroku-deflater
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
+  kgio
+  memcachier
   paypal-express
   pg
   protected_attributes
   pry
+  rack-cache
   rails (= 4.0.4)
   rails_12factor
   rmagick

@@ -24,6 +24,10 @@ gem 'curb'
 gem 'carmen-rails', '~> 1.0.0'
 gem 'biggs'
 gem 'alchemist'
+gem 'rack-cache'
+gem 'dalli'
+gem 'kgio'
+gem "memcachier"
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'
@@ -44,6 +48,7 @@ ruby '2.0.0'
 
 group :production do
   gem 'pg'
+  gem 'heroku-deflater'
   gem 'unicorn'
 end
 
