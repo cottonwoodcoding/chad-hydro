@@ -1,34 +1,34 @@
 @font-face {
   font-family: 'Novecento';
-  src: font-url('/assets/Novecentowide-Normal.otf');
+  src: asset-url('Novecentowide-Normal.otf');
   font-weight: normal;
   font-style: bold;
 }
 
 @font-face {
   font-family: 'Novecento-Bold';
-  src: font-url('/assets/Novecentowide-Bold.otf');
+  src: asset-url('Novecentowide-Bold.otf');
   font-weight: normal;
   font-style: bold;
 }
 
 @font-face {
   font-family: 'Novecento-DemiBold';
-  src: font-url('/assets/Novecentowide-DemiBold.otf');
+  src: asset-url('Novecentowide-DemiBold.otf');
   font-weight: normal;
   font-style: bold;
 }
 
 @font-face {
   font-family: 'Novecento-Medium';
-  src: font-url('/assets/Novecentowide-Medium.otf');
+  src: asset-url('Novecentowide-Medium.otf');
   font-weight: normal;
   font-style: bold;
 }
 
 @font-face {
   font-family: 'Novecento-Light';
-  src: font-url('/assets/Novecentowide-Light.otf');
+  src: asset-url('Novecentowide-Light.otf');
   font-weight: normal;
   font-style: normal;
 }
