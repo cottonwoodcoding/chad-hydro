@@ -30,7 +30,7 @@
               = setting.value
         -else
           .col-sm-10
-            %input.form-control{type: 'phone', value: setting.value, name: "setting-name[#{setting.name}]"}
+            %input.form-control{type: 'text', value: setting.value, name: "setting-name[#{setting.name}]"}
         - break if setting.name == 'state'
     .clearfix
     %hr
