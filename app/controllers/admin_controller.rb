@@ -4,7 +4,9 @@ class AdminController < ApplicationController
   before_action :authenticate_admin!
 
   def settings
-    @settings = Setting.all
+    @general_settings = Setting.where('name like ?' , 'general-%')
+    @business_hours_settings = Setting.where('name like ?', 'business-%')
+    @media_settings = Setting.where('name like ?', 'media-%')
     @days = %w(monday tuesday wednesday thursday friday saturday sunday)
     @media = %w(facebook instagram twitter youtube)
     @users = User.where(role: nil)

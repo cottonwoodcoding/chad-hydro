@@ -52,7 +52,7 @@ namespace :jobs do
     Rake::Task['jobs:generate_categories'].execute
     Rake::Task['jobs:sub_categories'].execute
     # Default Settings
-    ['checkout enabled', 'about us', 'toll free number', 'local number', 'street address', 'city', 'zip', 'state', 'monday-start', 'monday-end', 'tuesday-start', 'tuesday-end', 'wednesday-start', 'wednesday-end', 'thursday-start', 'thursday-end', 'friday-start', 'friday-end', 'saturday-start', 'saturday-end', 'sunday-start', 'sunday-end', 'facebook-social', 'instagram-social', 'twitter-social', 'youtube-social'].each do |setting|
+    ['general-checkout-enabled', 'general-about-us', 'general-toll-free-number', 'general-local-number', 'general-street-address', 'general-city', 'general-zip', 'general-state', 'business-monday-start', 'business-monday-end', 'business-tuesday-start', 'business-tuesday-end', 'business-wednesday-start', 'business-wednesday-end', 'business-thursday-start', 'business-thursday-end', 'business-friday-start', 'business-friday-end', 'business-saturday-start', 'business-saturday-end', 'business-sunday-start', 'business-sunday-end', 'media-facebook-social', 'media-instagram-social', 'media-twitter-social', 'media-youtube-social'].each do |setting|
       begin
         case setting
           when 'checkout enabled'

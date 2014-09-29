@@ -20,27 +20,27 @@
 #site_settings
   %form.form-horizontal{:role => "form", method: 'post', action: '/save_settings'}
     %input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token}/
-    - @settings.each do |setting|
+    - @general_settings.each do |setting|
       .form-group.font-db
         %label.col-sm-2.control-label
           = setting.name
         - if setting.name == 'about us'
           .col-sm-10
-            %textarea#about_us_setting.form-control{name: "setting-name[#{setting.name}]"}
+            %textarea#about_us_setting.form-control{name: "setting-name[general-#{setting.name}]"}
               = setting.value
         -else
           .col-sm-10
-            %input.form-control{type: 'text', value: setting.value, name: "setting-name[#{setting.name}]"}
+            %input.form-control{type: 'text', value: setting.value, name: "setting-name[general-#{setting.name}]"}
         - break if setting.name == 'state'
     .clearfix
     %hr
     %h4.text-center.underline Social Media Links
-    - @media.each do |media|
+    - @media_settings.each do |media|
       .form-group.font-db
         %label.col-sm-2.control-label
           = "#{media} URL"
         .col-sm-10
-          %input.form-control{type: 'url', name: "social-setting[#{media}-social]", value: Setting.setting_value("#{media}-social")}
+          %input.form-control{type: 'url', name: "social-setting[media-#{media}-social]", value: Setting.setting_value("media-#{media}-social")}
     .clearfix
     %hr
     %h4.text-center.underline Business Hours
@@ -49,10 +49,10 @@
         %label.col-sm-2.control-label
           = day
         .col-sm-10
-          %input.form-control.picker.time.ui-timepicker-input{:autocomplete => "off", :type => "text", name: "hours-setting[#{day}-start]", value: Setting.setting_value("#{day}-start")}
+          %input.form-control.picker.time.ui-timepicker-input{:autocomplete => "off", :type => "text", name: "hours-setting[business-#{day}-start]", value: Setting.setting_value("business-#{day}-start")}
           .text-center
             TO
-          %input.form-control.picker.time.ui-timepicker-input{:autocomplete => "off", :type => "text", name: "hours-setting[#{day}-end]", value: Setting.setting_value("#{day}-start")}
+          %input.form-control.picker.time.ui-timepicker-input{:autocomplete => "off", :type => "text", name: "hours-setting[business-#{day}-end]", value: Setting.setting_value("business-#{day}-start")}
     .clearfix
     %hr
     .actions.text-center
