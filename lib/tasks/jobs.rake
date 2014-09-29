@@ -55,35 +55,35 @@ namespace :jobs do
     ['general-checkout-enabled', 'general-about-us', 'general-toll-free-number', 'general-local-number', 'general-street-address', 'general-city', 'general-zip', 'general-state', 'business-monday-start', 'business-monday-end', 'business-tuesday-start', 'business-tuesday-end', 'business-wednesday-start', 'business-wednesday-end', 'business-thursday-start', 'business-thursday-end', 'business-friday-start', 'business-friday-end', 'business-saturday-start', 'business-saturday-end', 'business-sunday-start', 'business-sunday-end', 'media-facebook-social', 'media-instagram-social', 'media-twitter-social', 'media-youtube-social'].each do |setting|
       begin
         case setting
-          when 'checkout enabled'
+          when 'general-checkout-enabled'
             Setting.create!(name: setting, value: 'false')
-          when 'about us'
+          when 'general-about-us'
             Setting.create!(name: setting, value: "Moonlight Garden Supply is Utah's premier Organic & Hydroponic garden supply store. We are committed to providing the best products and knowledge the Organic & Hydroponic industry has to offer. From beginner to expert we have everything you need to keep your indoor garden thriving. We believe everyone should have access to clean healthy produce year round regardless of your climate. Our expert staff can take the hassle out of designing your indoor garden space to ensure maximum yields. We have licensed, insured Contractors in-house that can build your grow space out start to finish. Making make your path to healthy sustainable produce as painless as possible. Moonlight Garden Supply ships discreetly within the US and Canada.")
-          when 'toll free number'
+          when 'general-toll-free-number'
             Setting.create!(name: setting, value: '800-888-8888')
-          when 'local number'
+          when 'general-local-number'
             Setting.create!(name: setting, value: '801-793-9587')
-          when 'street address'
+          when 'general-street-address'
             Setting.create!(name: setting, value: '1530 S. State Street')
-          when 'city'
+          when 'general-city'
             Setting.create!(name: setting, value: 'Salt Lake City')
-          when 'zip'
+          when 'general-zip'
             Setting.create!(name: setting, value: '84115')
-          when 'state'
+          when 'general-state'
             Setting.create!(name: setting, value: 'UT')
-          when 'monday-start', 'tuesday-start', 'wednesday-start', 'thursday-start', 'friday-start', 'saturday-start'
+          when 'business-monday-start', 'business-tuesday-start', 'business-wednesday-start', 'business-thursday-start', 'business-friday-start', 'business-saturday-start'
             Setting.create!(name: setting, value: '10:00am')
-          when 'monday-end', 'tuesday-end', 'wednesday-end', 'thursday-end', 'friday-end', 'saturday-end'
+          when 'business-monday-end', 'business-tuesday-end', 'business-wednesday-end', 'business-thursday-end', 'business-friday-end', 'business-saturday-end'
             Setting.create!(name: setting, value: '7:00pm')
-          when 'sunday-start', 'sunday-end'
+          when 'business-sunday-start', 'business-sunday-end'
             Setting.create!(name: setting, value: 'closed')
-          when 'facebook-social'
+          when 'media-facebook-social'
             Setting.create!(name: setting, value: 'http://www.facebook.com/moonlightgardensupply')
-          when 'instagram-social'
+          when 'media-instagram-social'
             Setting.create!(name: setting, value: 'none')
-          when 'twitter-social'
+          when 'media-twitter-social'
             Setting.create!(name: setting, value: 'http://twitter.com/mgardensupply')
-          when 'youtube-social'
+          when 'media-youtube-social'
             Setting.create!(name: setting, value: 'none')
         end
       rescue
