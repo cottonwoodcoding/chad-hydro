@@ -1,8 +1,8 @@
 class AddSettingsTable < ActiveRecord::Migration
   def change
     create_table :settings do |t|
-      t.text :name
-      t.string :value
+      t.string :name
+      t.text :value
 
       t.timestamps
     end
