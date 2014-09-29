@@ -39,7 +39,7 @@
         %label.col-sm-2.control-label
           = "#{media.name.gsub('media-', '').gsub('-social', '')} URL"
         .col-sm-10
-          %input.form-control{type: 'url', name: "social-setting[media-#{media.name}-social]", value: Setting.setting_value("media-#{media.name}-social")}
+          %input.form-control{type: 'url', name: "social-setting[media-#{media.name}-social]", value: Setting.setting_value(media.name)}
     .clearfix
     %hr
     %h4.text-center.underline.font-db Business Hours
