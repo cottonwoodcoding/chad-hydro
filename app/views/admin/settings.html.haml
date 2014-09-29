@@ -26,11 +26,11 @@
           = setting.name.gsub('general-', '')
         - if setting.name == 'general-about-us'
           .col-sm-10
-            %textarea#about_us_setting.form-control{name: "setting-name[general-#{setting.name}]"}
+            %textarea#about_us_setting.form-control{name: "setting-name[#{setting.name}]"}
               = setting.value
         -else
           .col-sm-10
-            %input.form-control{type: 'text', value: setting.value, name: "setting-name[general-#{setting.name}]"}
+            %input.form-control{type: 'text', value: setting.value, name: "setting-name[{setting.name}]"}
     .clearfix
     %hr
     %h4.text-center.underline.font-db Social Media Links
@@ -41,9 +41,9 @@
         .col-sm-10
           - media_value = Setting.setting_value(media.name)
           - if media_value == 'none'
-            %input.form-control{type: 'url', name: "social-setting[media-#{media.name}-social]", value: ''}
+            %input.form-control{type: 'url', name: "social-setting[#{media.name}]", value: ''}
           - else
-            %input.form-control{type: 'url', name: "social-setting[media-#{media.name}-social]", value: Setting.setting_value(media.name)}
+            %input.form-control{type: 'url', name: "social-setting[#{media.name}]", value: Setting.setting_value(media.name)}
     .clearfix
     %hr
     %h4.text-center.underline.font-db Business Hours
