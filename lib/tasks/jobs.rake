@@ -50,6 +50,7 @@ namespace :jobs do
   task setup: :environment do
     # Generate Shop Categories
     Rake::Task['jobs:generate_categories'].execute
+    Rake::Task['jobs:sub_categories'].execute
     # Default Settings
     ['about us', 'toll free number', 'local number', 'street address', 'city', 'zip', 'state', 'monday-start', 'monday-end', 'tuesday-start', 'tuesday-end', 'wednesday-start', 'wednesday-end', 'thursday-start', 'thursday-end', 'friday-start', 'friday-end', 'saturday-start', 'saturday-end', 'sunday-start', 'sunday-end', 'facebook-social', 'instagram-social', 'twitter-social', 'youtube-social'].each do |setting|
       begin
