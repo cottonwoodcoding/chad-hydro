@@ -33,16 +33,16 @@
             %input.form-control{type: 'text', value: setting.value, name: "setting-name[general-#{setting.name}]"}
     .clearfix
     %hr
-    %h4.text-center.underline Social Media Links
+    %h4.text-center.underline.font-db Social Media Links
     - @media_settings.each do |media|
       .form-group.font-db
         %label.col-sm-2.control-label
-          = "#{media.name.gsub('media-', '')} URL"
+          = "#{media.name.gsub('media-', '').gsub('-social', '')} URL"
         .col-sm-10
-          %input.form-control{type: 'url', name: "social-setting[media-#{media}-social]", value: Setting.setting_value("media-#{media.name}-social")}
+          %input.form-control{type: 'url', name: "social-setting[media-#{media.name}-social]", value: Setting.setting_value("media-#{media.name}-social")}
     .clearfix
     %hr
-    %h4.text-center.underline Business Hours
+    %h4.text-center.underline.font-db Business Hours
     - @days.each do |day|
       .form-group.font-db
         %label.col-sm-2.control-label
