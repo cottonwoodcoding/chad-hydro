@@ -1,5 +1,22 @@
 $ ->
 
+  toggleCatStuff = ->
+    $('#cat-accordion').on 'hidden.bs.collapse', ->
+      $('.cat-right').removeClass('hide')
+      $('.cat-down').addClass('hide')
+    $('#cat-accordion').on 'shown.bs.collapse', ->
+      $('.cat-right').addClass('hide')
+      $('.cat-down').removeClass('hide')
+
+    $('#sub-accordion').on 'hidden.bs.collapse', ->
+      $('.sub-right').removeClass('hide')
+      $('.sub-down').addClass('hide')
+    $('#sub-accordion').on 'shown.bs.collapse', ->
+      $('.sub-right').addClass('hide')
+      $('.sub-down').removeClass('hide')
+
+  toggleCatStuff()
+
   search_term = location.search.split('=')
   if search_term.length > 1
     $('#search_term').val(search_term[1].replace('+', ' '))
@@ -34,5 +51,10 @@ $ ->
     $addToCartModal.modal('show')
     $addToCartModal.find('.modal-product-title').html($(e.target).attr('value'))
     $('#modal_add_to_cart').attr('href', $(e.target).attr('href'))
+
+  $('#sub-accordion').show ->
+    $('#collapse-cat').collapse 'hide'
+
+
 
 

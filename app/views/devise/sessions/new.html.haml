@@ -1,12 +1,15 @@
-.sign-in
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    %div
-      = f.label :email
-      %br
-      = f.email_field :email, autofocus: true
-    %div
-      = f.label :password
-      %br
-      = f.password_field :password, autocomplete: "off"
-    %div= f.submit "Sign in", {class: 'btn btn-sm btn-primary'}
-  = render "devise/shared/links"
+%h3.text-center.font-db  sign in to your account
+.sign-in.font-db
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
+    .form-group
+      = f.label :email, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.email_field :email, {autofocus: true, class: 'form-control'}
+    .form-group
+      = f.label :password, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.password_field :password, {autocomplete: "off", class: 'form-control'}
+    .text-center
+      = f.submit "Sign in", {class: 'btn btn-sm btn-success'}
+      %hr
+      = render "devise/shared/links"

@@ -1,4 +1,5 @@
 namespace :jobs do
+
   desc "Run this to generate all product categories"
   task generate_categories: :environment do
     num = 1
@@ -21,6 +22,26 @@ namespace :jobs do
         sleep 1
         product.destroy
         puts "#{product.title} deleted"
+      end
+    end
+  end
+
+  desc "Run this to generate all sub categories ('vendors')"
+  task sub_categories: :environment do
+    num = 0
+    while true
+      begin
+        num = num + 1
+        products = ShopifyAPI::Product.paginate(per: 150, page: num)
+        break if products.count == 0
+        products.each do |product|
+          product_category = ProductCategory.find_by(category: product.product_type)
+          product_category.product_sub_categories << ProductSubCategory.create!(name: product.vendor)
+          puts "#{product.vendor} was successfully added as a sub category for #{product_category.category}"
+        end
+      rescue => e
+        puts "error happened while adding sub categories - #{e}"
+        next
       end
     end
   end

@@ -7,6 +7,8 @@ class AdminController < ApplicationController
     @settings = Setting.all
     @days = %w(monday tuesday wednesday thursday friday saturday sunday)
     @media = %w(facebook instagram twitter youtube)
+    @users = User.where(role: nil)
+    @admins = User.where(role: 'admin')
   end
 
   def save_settings
@@ -48,6 +50,18 @@ class AdminController < ApplicationController
       flash[:alert] = 'There was an error sending the newsletter please try again'
     end
     redirect_to action: :newsletter
+  end
+
+  def change_user_role
+    user_id = params[:id].to_i
+    user = User.find(user_id)
+    if current_user.id == user_id && user.role == 'admin'
+      render text: 'You cannot demote yourself from admin.', status: 400 and return
+    else
+      user.role == 'admin' ? user.role = nil : user.role = 'admin'
+      user.save
+    end
+    render nothing: true
   end
 
   private

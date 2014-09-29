@@ -11,6 +11,7 @@ ChadHydro::Application.routes.draw do
   get '/contact', to: 'contact#index'
   get '/shop', to: 'shop#index'
   get '/shop/category/:category_type', to: 'shop#sort_by_category'
+  get '/shop/category/:category_type/:sub_category_type/:sub_category', to: 'shop#sort_by_sub_category', constraints: { :sub_category => /[^\/]+/ }
   get '/shop/product/:product_id', to: 'shop#product'
   get '/shop/product/:product_id/reviews', to: 'shop#product_reviews'
   get '/shop/search', to: 'shop#search_by_title'
@@ -41,4 +42,5 @@ ChadHydro::Application.routes.draw do
   post '/send_newsletter', to: 'admin#send_newsletter'
   post '/cart/user_check'
   post '/cart/submit_purchase', to: 'cart#submit_purchase'
+  post '/admin/change_user_role/:id', to: 'admin#change_user_role'
 end

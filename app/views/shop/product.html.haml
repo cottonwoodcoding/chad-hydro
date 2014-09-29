@@ -8,16 +8,14 @@
     -else
       .product-image.text-center
         %img.group.list-group-image{:alt => "", :src => @product.images.first.src}
-    .caption
+    .caption.row
       .body-container
-        %p.font-n.group.inner.list-group-item-text.text-center
+        %p.font-n.group.inner.list-group-item-text.text-center.col-md-12.col-xs-12
           = strip_tags @product.body_html
-    .footer
-      .row
-        .col-xs-12.col-md-6
-          %p.font-n.lead.text-success
-            Price:
-            = number_to_currency(@product.variants.first.price)
-        .col-xs-12.col-md-6
-          %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{@product.id}/1"} Add To Cart
-          = button_to("Back", :back, {method: 'get', class: 'button-margin btn pull-right btn-sm font-l'})
+      .col-xs-4.col-md-6
+        %p.font-n.lead.text-success
+          Price:
+          = number_to_currency(@product.variants.first.price)
+      .col-xs-8.col-md-6
+        %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{@product.id}/1"} Add To Cart
+        = button_to("Back", :back, {method: 'get', class: 'button-margin btn pull-right btn-sm font-l'})

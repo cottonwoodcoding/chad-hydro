@@ -1,5 +1,21 @@
 %h2.text-center.font-db Admin Settings
 %hr
+#admin_settings.font-db.site.text-center
+  %h4.underline Admin Users
+  - @admins.each do |admin|
+    .admin
+      = fa_icon 'legal'
+      = "#{admin.first_name} #{admin.last_name}"
+      = link_to "/admin/change_user_role/#{admin.id}", {class: 'demote_admin'} do
+        = fa_icon 'arrow-down'
+  %h4.underline Non Admin Users
+  - @users.each do |user|
+    .user
+      = fa_icon 'user'
+      = "#{user.first_name} #{user.last_name}"
+      = link_to "/admin/change_user_role/#{user.id}", {class: 'promote_user'} do
+        = fa_icon 'arrow-up'
+%hr
 %h4.text-center.underline.font-db General Settings
 #site_settings
   %form.form-horizontal{:role => "form", method: 'post', action: '/save_settings'}

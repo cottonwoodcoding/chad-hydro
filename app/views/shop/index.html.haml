@@ -1,13 +1,18 @@
 = render(partial: 'add_to_cart_modal')
 %h2#shop_header.text-center.font-m
-  = "Shop - #{@category.titleize}"
-#accordion.panel-group.text-center
+  - if @sub_category
+    = "Shop - #{@category.titleize} - #{@sub_category.titleize}"
+  - else
+    = "Shop - #{@category.titleize}"
+#cat-accordion.panel-group.text-center
   .panel.panel-default
     .panel-heading
       %h4.panel-title.font-n
-        %a{"data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapseOne"}
+        %a{"data-parent" => "#cat-accordion", "data-toggle" => "collapse", :href => "#collapse-cat"}
           Categories
-    #collapseOne.panel-collapse.collapse.in
+          = fa_icon('arrow-down', {class: 'cat-down'})
+          = fa_icon('arrow-right', {class: 'cat-right hide'})
+    #collapse-cat.panel-collapse.collapse.in
       .panel-body#categories
         .category
           %a.font-l{href: '/shop/category/all'} All
@@ -15,6 +20,21 @@
           .category
             %a.font-l{href: "/shop/category/#{category_info.category}"}
               = category_info.category.pluralize
+- if @product_sub_categories
+  #sub-accordion.panel-group.text-center
+    .panel.panel-default
+      .panel-heading
+        %h4.panel-title.font-n
+          %a{"data-parent" => "#sub-accordion", "data-toggle" => "collapse", :href => "#collapse-sub"}
+            Vendors
+            = fa_icon('arrow-right' , {class: 'sub-right hide'})
+            = fa_icon('arrow-down', {class: 'sub-down'})
+      #collapse-sub.panel-collapse.collapse.in
+        .panel-body#sub-categories
+          - @product_sub_categories.each do |sub_category|
+            .category
+              %a.font-l{href: "/shop/category/#{@category}/vendor/#{sub_category.name}"}
+                = sub_category.name
 .container-fluid
   %form#search_products{method: 'get', action: '/shop/search'}
     .input-group
