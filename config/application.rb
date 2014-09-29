@@ -21,6 +21,7 @@ module ChadHydro
     # config.i18n.default_locale = :de
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
     config.cache_store = :dalli_store
   end
 end
