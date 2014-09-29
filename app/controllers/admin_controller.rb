@@ -10,7 +10,7 @@ class AdminController < ApplicationController
     @days = %w(monday tuesday wednesday thursday friday saturday sunday)
     @media = %w(facebook instagram twitter youtube)
     @users = User.where(role: nil)
-    @admins = User.where(role: 'admin', role: 'super admin').all
+    @admins = User.where('role = ? or role = ?', 'admin', 'super admin')
   end
 
   def save_settings
