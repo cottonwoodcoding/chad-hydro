@@ -24,14 +24,13 @@
       .form-group.font-db
         %label.col-sm-2.control-label
           = setting.name
-        - if setting.name == 'about us'
+        - if setting.name == 'general-about-us'
           .col-sm-10
             %textarea#about_us_setting.form-control{name: "setting-name[general-#{setting.name}]"}
               = setting.value
         -else
           .col-sm-10
             %input.form-control{type: 'text', value: setting.value, name: "setting-name[general-#{setting.name}]"}
-        - break if setting.name == 'state'
     .clearfix
     %hr
     %h4.text-center.underline Social Media Links

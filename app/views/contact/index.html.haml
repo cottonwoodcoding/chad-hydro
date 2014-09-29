@@ -27,12 +27,12 @@
                   %i.icon-phone-sign
                   Toll Free Number:
                   .font-n
-                    = phone_number_formatted(Setting.setting_value('toll free number'))
+                    = phone_number_formatted(Setting.setting_value('general-toll-free-number'))
                 %br
                   %i.icon-phone-sign
                   Local Number:
                   .font-n
-                    = phone_number_formatted(Setting.setting_value('local number'))
+                    = phone_number_formatted(Setting.setting_value('general-local-number'))
         .panel
           .panel-heading
             %h3
@@ -46,8 +46,8 @@
                   %th.font-n Time
               %tbody
                 - @days.each do |day|
-                  - start_value = Setting.setting_value("#{day}-start")
-                  - end_value = Setting.setting_value("#{day}-end")
+                  - start_value = Setting.setting_value("business-#{day}-start")
+                  - end_value = Setting.setting_value("business-#{day}-end")
                   - if start_value == 'closed'
                     %tr.danger
                       %td.font-l

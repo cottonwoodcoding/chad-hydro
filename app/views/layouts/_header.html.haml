@@ -12,7 +12,7 @@
       #company-name.pull-left
         .nav-header.font-db Moonlight Garden Supply
         #company-phone.font-m
-          = phone_number_formatted(Setting.setting_value('toll free number'))
+          = phone_number_formatted(Setting.setting_value('general-toll-free-number'))
         #social-media-links.pull-right
           - @social_media_settings.each do |media|
             - unless media.value == 'none'
