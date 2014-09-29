@@ -49,7 +49,7 @@ class CartController < ApplicationController
         payment_request = Paypal::Payment::Request.new(
           :description   => 'Moonlight Garden Supply Purchase', # item description
           :quantity      => @cart.count, # item quantity
-          :amount        => params[:total].gsub('$', '').strip
+          :amount        => params[:total].gsub('$', '').gsub(',', '').strip
         )
 
         response = paypal_request.setup(
