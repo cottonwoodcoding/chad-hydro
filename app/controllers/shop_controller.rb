@@ -16,8 +16,10 @@ class ShopController < ApplicationController
 
   def sort_by_category
     @category = params[:category_type]
-    @products = @category ==  'all' ?  @products : ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {product_type: @category})
-    @product_sub_categories = ProductCategory.find_by(category: @category).product_sub_categories.all
+    if @category != 'all'
+      @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {product_type: @category})
+      @product_sub_categories = ProductCategory.find_by(category: @category).product_sub_categories.all
+    end
     render :index
   end
 
