@@ -17,7 +17,7 @@
           - @social_media_settings.each do |media|
             - unless media.value == 'none'
               = link_to media.value, {target: '_blank'} do
-                = fa_icon "#{media.name.split('-').first}-square 2x"
+                = fa_icon "#{media.name.split('media-').last.split('-').first}-square 2x"
     .collapse.navbar-collapse#nav-items.custom-nav.navbar-right
       %ul.nav.navbar-nav
         %li
