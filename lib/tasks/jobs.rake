@@ -38,7 +38,7 @@ namespace :jobs do
           product_category = ProductCategory.find_by(category: product.product_type)
           product_sub_category = ProductSubCategory.find_or_create_by(name: product.vendor)
           unless product_category.product_sub_categories.include?(product_sub_category)
-            product_category.product_sub_categories << product_sub_category unless product_category.product_sub_categories.include?(product_sub_category)
+            product_category.product_sub_categories << product_sub_category
             puts "#{product.vendor} was successfully added as a sub category for #{product_category.category}"
           end
         end
