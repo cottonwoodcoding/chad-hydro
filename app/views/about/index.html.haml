@@ -1,14 +1,10 @@
 .row
-  %h2.text-center.font-m About Us
-  .clearfix
-  %hr
   .well.about-us.font-m
     = Setting.setting_value('general-about-us')
   %hr
   .clearfix
 .row
   .c-wrapper
-    %h2.text-center.font-m Featured Products
     - if @featured_products.count == 0
       .well.text-center.font-l No Featured Products Right Now...
     - else
@@ -20,13 +16,13 @@
                 %a{:href => product_url(product.id)}
                   %img{:src => product.images.first.src }
                 .carousel-caption.font-l
-                  = product.title
+                  = "Featured Product - #{product.title}"
             - else
               .item
                 %a{:href => product_url(product.id)}
                   %img{:src => product.images.first.src }
                 .carousel-caption.font-l
-                  = product.title
+                  = "Featured Product - #{product.title}"
         %a.left.carousel-control{"data-slide" => "prev", href: "#carousel-example-generic", role: "button"}
           %span.glyphicon.glyphicon-chevron-left
         %a.right.carousel-control{"data-slide" => "next", href: "#carousel-example-generic", role: "button"}

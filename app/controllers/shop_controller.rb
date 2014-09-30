@@ -18,7 +18,7 @@ class ShopController < ApplicationController
     @category = params[:category_type]
     if @category != 'all'
       @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {product_type: @category})
-      @product_sub_categories = ProductCategory.find_by(category: @category).product_sub_categories.all
+      @product_sub_categories = ProductCategory.find_by(category: @category).product_sub_categories.all.sort_by {|pc| pc.name }
     end
     render :index
   end
@@ -28,7 +28,7 @@ class ShopController < ApplicationController
     @category = params[:category_type]
     # TODO: make it so we don't hard code vendor here and can sort by other properties on the object
     @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {product_type: @category, vendor: @sub_category})
-    @product_sub_categories = ProductCategory.find_by(category: @category).product_sub_categories.all
+    @product_sub_categories = ProductCategory.find_by(category: @category).product_sub_categories.all.sort_by {|pc| pc.name }
     render :index
   end
 

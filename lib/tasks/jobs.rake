@@ -36,7 +36,8 @@ namespace :jobs do
         break if products.count == 0
         products.each do |product|
           product_category = ProductCategory.find_by(category: product.product_type)
-          product_category.product_sub_categories << ProductSubCategory.create!(name: product.vendor)
+          product_sub_category = ProductSubCategory.find_or_create_by(name: product.vendor)
+          product_category.product_sub_categories << product_sub_category
           puts "#{product.vendor} was successfully added as a sub category for #{product_category.category}"
         end
       rescue => e
