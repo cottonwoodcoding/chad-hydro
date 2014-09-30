@@ -13,6 +13,7 @@ class ContactController < ApplicationController
   end
 
   def submit_request
+    binding.pry
   end
 
 end

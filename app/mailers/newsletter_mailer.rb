@@ -1,7 +1,7 @@
 class NewsletterMailer < ActionMailer::Base
   include SendGrid
 
-  default from: "notifications@moonlightgardensupply.com"
+  default from: "newsletter@moonlightgardensupply.com"
 
   def newsletter_email(profiles, content)
     emails = profiles.map{|profile| profile.user.email}.join(',')
