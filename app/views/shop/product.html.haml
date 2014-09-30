@@ -8,10 +8,10 @@
     -else
       .product-image.text-center
         %img.group.list-group-image{:alt => "", :src => @product.images.first.src}
-    .caption.row
-      .body-container
-        %p.font-n.group.inner.list-group-item-text.text-center.col-md-12.col-xs-12
-          = strip_tags @product.body_html
+    .row
+      .font-m.well
+        %p.font-l.group.inner.list-group-item-text.text-center.col-md-12.col-xs-12
+          = @product.body_html.html_safe
       .col-xs-4.col-md-6
         %p.font-n.lead.text-success
           Price:
