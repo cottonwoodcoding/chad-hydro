@@ -12,7 +12,7 @@
     -if Setting.setting_value('general-checkout-enabled') == 'true'
       %a.checkout{href: "http://moonlight-garden-supply.myshopify.com/cart/#{perma_link_append}", role: 'button', class: 'btn btn-primary font-l', target: '_blank'} Checkout
     - else
-      %i The admin has disabled checkouts Please call us to place this order.
+      %i The admin has disabled checkouts. Please call us to place this order.
   %hr
   = render(partial: 'shop/products', locals: {products: @products, cart: true})
   = render(partial: 'remove_from_cart_modal')
