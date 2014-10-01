@@ -149,6 +149,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    raty_ratings (1.2.0)
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
@@ -262,6 +263,7 @@ DEPENDENCIES
   rack-cache
   rails (= 4.0.4)
   rails_12factor
+  raty_ratings
   rmagick
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.2)

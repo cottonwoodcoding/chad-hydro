@@ -1,4 +1,3 @@
-= render(partial: 'product_nav', locals: {position: 1})
 .item
   %h2.font-m
     = @product.title
@@ -19,3 +18,16 @@
       .col-xs-8.col-md-6
         %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{@product.id}/1"} Add To Cart
         = button_to("Back", :back, {method: 'get', class: 'button-margin btn pull-right btn-sm font-l'})
+.reviews
+  %h3.font-m
+    Reviews
+  %a#add_review{href: '#'}
+    = fa_icon('plus', text: 'Add Review')
+  %hr
+  - if @reviews.blank?
+    Be the first to write a review
+  - else
+    %a#show_reviews{href: '#'}
+      = "Show #{@reviews.count} #{'review'.pluralize(@reviews.count)}"
+    .review_container
+= render partial: '/shop/review_modal'

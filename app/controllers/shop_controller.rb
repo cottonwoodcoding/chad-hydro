@@ -7,6 +7,7 @@ class ShopController < ApplicationController
   end
 
   def product
+    @reviews = Review.where(product_id: params[:product_id])
     @product = ShopifyAPI::Product.find(params[:product_id])
   end
 

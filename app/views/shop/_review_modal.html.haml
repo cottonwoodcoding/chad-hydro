@@ -1,0 +1,20 @@
+#review_modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+          %span.sr-only Close
+        %h4.modal-title Add A Review
+      .modal-body
+        %form#review_form{role: 'form', method: 'POST', action: '/review/add'}
+          = hidden_field_tag :authenticity_token, form_authenticity_token
+          %input#product_id.hidden{name: 'product_id'}
+          .form-group
+            #rating
+          .form-group
+            %textarea#review_text{name: 'review_text', rows: 5}
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+            %button.btn.btn-primary{:type => "submit"} Submit
+

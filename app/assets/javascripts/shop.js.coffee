@@ -55,6 +55,44 @@ $ ->
   $('#sub-accordion').show ->
     $('#collapse-cat').collapse 'hide'
 
+  $('#add_review').on 'click', (e) ->
+    e.preventDefault()
+    $('#rating').raty({
+      half: true,
+      path: '/assets',
+      score: 0})
+    $('#review_text').val('')
+    $('#review_modal').modal 'show'
 
+  $('#review_form').on 'submit', (e) ->
+    e.preventDefault()
+    product_id = window.location.pathname.split('product/')[1]
+    score = $("input[name='score']").val()
+    text = $('#review_text').val()
+    $.ajax '/review/new',
+      type: 'POST'
+      data:
+        product_id: product_id
+        score: score
+        text: text
+      success: ->
+        window.location.reload()
 
+  $('#show_reviews').on 'click', (e) ->
+    e.preventDefault()
+    product_id = window.location.pathname.split('product/')[1]
+    $.ajax '/review/show',
+      type: 'GET'
+      data:
+        product_id: product_id
+      success: (data) ->
+        $('#show_reviews').addClass('hidden')
+        $('.review_container').append(data)
+        ratings = $('.rating')
+        $.each ratings, (rating) ->
+          $(@).raty({
+            score: $(@).attr('data-score'),
+            half: true,
+            path: '/assets',
+            readOnly: true})
 

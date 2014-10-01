@@ -27,6 +27,7 @@ ChadHydro::Application.routes.draw do
   get '/cart/purchase_confirm', to: 'cart#purchase_confirm'
   get '/cart/purchase_error', to: 'cart#purchase_error'
   get '/users/:id/orders', to: 'order#index'
+  get '/review/show', to: 'review#show'
 
   post '/blog/update', to: 'blog#update'
   post '/blog/create', to: 'blog#create'
@@ -43,4 +44,5 @@ ChadHydro::Application.routes.draw do
   post '/cart/user_check'
   post '/cart/submit_purchase', to: 'cart#submit_purchase'
   post '/admin/change_user_role/:id', to: 'admin#change_user_role'
+  post '/review/new', to: 'review#new'
 end

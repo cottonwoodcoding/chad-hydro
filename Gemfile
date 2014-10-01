@@ -28,6 +28,7 @@ gem 'rack-cache'
 gem 'dalli'
 gem 'kgio'
 gem "memcachier"
+gem 'raty_ratings'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'

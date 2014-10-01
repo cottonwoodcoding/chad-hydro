@@ -1,0 +1,5 @@
+- @reviews.each do |review|
+  .review
+    .rating{'data-score' => review.rating}
+    .review-text
+      = review.review_text
