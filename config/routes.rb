@@ -31,7 +31,7 @@ ChadHydro::Application.routes.draw do
 
   post '/blog/update', to: 'blog#update'
   post '/blog/create', to: 'blog#create'
-  post '/submit_request', to: 'contact#submit_request'
+  post '/send_feedback', to: 'contact#send_feedback'
   post '/add_to_cart/:product_id/:quantity', to: 'cart#add_to_cart'
   post '/remove_from_cart/:product_id/:quantity', to: 'cart#remove_from_cart'
   post '/blog/new_comment', to: 'blog#new_comment'

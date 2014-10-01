@@ -1,6 +1,23 @@
+.text-center
+  %img#review_logo{src: image_path('moonlight-full.png')}
 %h1.text-center.font-db Confirm Your Purchase
 %hr
 #cart-header.text-center
+  %h3.font-n Shipping Address
+  %i *All orders are shipped to your profile shipping address
+  .well.font-m.text-center
+    Street Address:
+    = @profile.street_address
+    %br
+    City:
+    = @profile.city
+    %br
+    State:
+    = @profile.state
+    %br
+    Zip:
+    = @profile.zip
+  %hr
   %h3.font-n
     Order Total:
     %span.text-success.font-n
@@ -9,6 +26,7 @@
     = hidden_field_tag :paypal_token, @token
     = hidden_field_tag :paypal_payer_id, @payer_id
     = hidden_field_tag :authenticity_token, form_authenticity_token
+    = link_to 'back to shop', '/shop', {class: 'btn btn-default font-l', role: 'button'}
     %button#submit_purchase.btn.btn-danger.font-l{type: 'submit'} Confirm Purchase
 %hr
 = render(partial: 'shop/products', locals: {products: @products, review: true})

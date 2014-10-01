@@ -56,6 +56,7 @@ class CartController < ApplicationController
           payment_request,
           ENV['paypal_success_redirect'], # success redirect url
           ENV['paypal_error_redirect'], # error redirect url
+          :no_shipping => true
         )
         render text: response.redirect_uri
       end
@@ -65,6 +66,7 @@ class CartController < ApplicationController
   end
 
   def purchase_confirm
+    @profile = current_user.profile
     @token = params[:token]
     @payer_id = params[:PayerID]
     render(:purchase_confirm, layout: 'layouts/no_header')
