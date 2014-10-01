@@ -16,7 +16,7 @@
           Price:
           = number_to_currency(@product.variants.first.price)
       .col-xs-8.col-md-6
-        %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right{:href => "/add_to_cart/#{@product.id}/1"} Add To Cart
+        %a.font-l.add_to_cart.btn.btn-primary.btn-sm.pull-right.button-margin{:href => "/add_to_cart/#{@product.id}/1", :value => @product.title} Add To Cart
         = button_to("Back", :back, {method: 'get', class: 'button-margin btn pull-right btn-sm font-l'})
 .reviews
   %h3.font-m
@@ -31,3 +31,4 @@
       = "Show #{@reviews.count} #{'review'.pluralize(@reviews.count)}"
     .review_container
 = render partial: '/shop/review_modal'
+= render(partial: 'add_to_cart_modal')
