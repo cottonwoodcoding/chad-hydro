@@ -1,4 +1,13 @@
 $ ->
+    setInterval (->
+      $heart = $('#footer i')
+      if $heart.hasClass('red')
+        $heart.removeClass('red')
+      else
+        $heart.addClass('red')
+      return
+    ), 1000
+
     $('#submit_purchase').click ->
       $(@).html('Submitting Purchase...')
       $(@).attr('disabled', 'disabled')
