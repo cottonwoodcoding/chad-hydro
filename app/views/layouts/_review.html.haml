@@ -1,5 +1,9 @@
 - @reviews.each do |review|
   .review
+    - if admin?
+      %a.delete-review{href: '#', 'data-id' => review.id}
+        = fa_icon "minus-circle", text: 'Remove'
     .rating{'data-score' => review.rating}
     .review-text
       = review.review_text
+  %hr

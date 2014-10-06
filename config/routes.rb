@@ -45,4 +45,5 @@ ChadHydro::Application.routes.draw do
   post '/cart/submit_purchase', to: 'cart#submit_purchase'
   post '/admin/change_user_role/:id', to: 'admin#change_user_role'
   post '/review/new', to: 'review#new'
+  post '/review/delete', to: 'review#delete'
 end

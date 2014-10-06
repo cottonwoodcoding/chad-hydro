@@ -1,4 +1,8 @@
 class ReviewController < ApplicationController
+  include ApplicationHelper
+
+  before_action :authenticate_user!, only: [:delete]
+
   def new
     review = Review.new
     review.product_id = params['product_id']
@@ -12,5 +16,14 @@ class ReviewController < ApplicationController
   def show
     @reviews = Review.where(product_id: params['product_id'])
     render partial: '/layouts/review'
+  end
+
+  def delete
+    if admin?
+      id = params['id']
+      review = Review.find(id)
+      review.destroy
+    end
+    render nothing: true
   end
 end

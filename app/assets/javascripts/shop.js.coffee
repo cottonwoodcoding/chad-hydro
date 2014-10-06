@@ -96,3 +96,12 @@ $ ->
             path: '/assets',
             readOnly: true})
 
+  $(document).on 'click', '.delete-review', (e) ->
+    e.preventDefault()
+    id = $(@).attr('data-id')
+    $.ajax '/review/delete',
+      type: 'POST'
+      data:
+        id: id
+      success: ->
+        window.location.reload()
