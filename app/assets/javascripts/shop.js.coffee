@@ -59,7 +59,7 @@ $ ->
     e.preventDefault()
     $('#rating').raty({
       half: true,
-      path: '/assets',
+      path: '/',
       score: 0})
     $('#review_text').val('')
     $('#review_modal').modal 'show'
@@ -93,7 +93,7 @@ $ ->
           $(@).raty({
             score: $(@).attr('data-score'),
             half: true,
-            path: '/assets',
+            path: '/',
             readOnly: true})
 
   $(document).on 'click', '.delete-review', (e) ->

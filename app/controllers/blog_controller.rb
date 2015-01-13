@@ -19,7 +19,6 @@ class BlogController < ApplicationController
       posts[date] = [] unless posts.has_key? date
       posts[date] << a.attributes
     end
-    posts['July 2014'] = [{"created_at" => "2014-07-05"}]
     @articles = posts.each do |k, v|
       v.sort { |x,y| x['created_at'].to_datetime <=> y['created_at'].to_datetime }
     end
