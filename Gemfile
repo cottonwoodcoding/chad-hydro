@@ -56,7 +56,7 @@ end
 group :development, :test do
    gem 'thin'
    gem 'rspec-rails', '~> 3.0.0'
-   gem 'debugger'
+   gem 'byebug'
    gem 'pry'
    gem 'sqlite3'
 end
