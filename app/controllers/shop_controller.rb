@@ -38,13 +38,24 @@ class ShopController < ApplicationController
     if search_term.blank?
       @category = 'All'
     else
-      @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {title: "%#{search_term.titleize}%", vendor: "%#{search_term.titleize}%"})
+      @products = products_by_title_or_vendor(search_term, params[:page])
       @category = search_term
+    end
+    if @products.count == 0 && params[:page] != 1
+      @products = products_by_title_or_vendor(search_term, 1)
     end
     render :index
   end
 
   private
+
+  def products_by_title_or_vendor(search_term, page)
+    products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: page, params: {title: "%#{search_term.titleize}%"})
+    if products.count == 0
+      products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: page, params: {vendor: "#{search_term.titleize}"})
+    end
+    products
+  end
 
   def all_products_and_categories
     @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page])
