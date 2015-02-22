@@ -42,7 +42,7 @@
   .text-center
     %form#search_products{method: 'get', action: '/shop/search'}
       .input-group.search_input_group
-        %input.form-control#search_term{:placeholder => "Search Products By Title", :type => "text", name: 'search_term'}
+        %input.form-control#search_term{:placeholder => "Search By Title or Vendor", :type => "text", name: 'search_term'}
           %span.input-group-btn
             %button.btn.btn-success{:type => "submit"} Search
   #products.row.list-group

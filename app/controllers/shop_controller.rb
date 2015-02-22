@@ -38,7 +38,7 @@ class ShopController < ApplicationController
     if search_term.blank?
       @category = 'All'
     else
-      @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {title: "%#{search_term.titleize}%"})
+      @products = ShopifyAPI::Product.paginate(per: PER_PAGE, page: params[:page], params: {title: "%#{search_term.titleize}%", vendor: "%#{search_term.titleize}%"})
       @category = search_term
     end
     render :index
