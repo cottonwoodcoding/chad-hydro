@@ -26,6 +26,7 @@ ChadHydro::Application.configure do
     :entitystore  => client
   }
   config.static_cache_control = "public, max-age=2592000"
+  GA.tracker = "UA-60141145-1"
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.

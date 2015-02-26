@@ -29,6 +29,7 @@ gem 'dalli'
 gem 'kgio'
 gem "memcachier"
 gem 'raty_ratings'
+gem 'google-analytics-rails'
 
 # Makes running your Rails app easier. Based on the ideas behind 12factor.net
 gem 'rails_12factor'
